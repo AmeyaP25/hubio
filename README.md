@@ -51,14 +51,14 @@ hubio/
 └── contexts/              # React contexts
 ```
 
-## 🎨 Design
+## Design
 
 - **Color Scheme**: Beige/yellow minimalist design
 - **Typography**: Poppins for body text, Merriweather for headings
 - **Theme**: Dark mode support
 - **Responsive**: Mobile-first design
 
-## 🔐 Admin Access
+## Admin Access
 
 Default admin credentials:
 - **Email**: admin@hubio.org
@@ -66,7 +66,7 @@ Default admin credentials:
 
 Access the admin dashboard at `/admin` after logging in.
 
-## 📊 Database Schema
+## Database Schema
 
 The application uses Supabase with the following main tables:
 - `resources` - Community resources
@@ -75,7 +75,6 @@ The application uses Supabase with the following main tables:
 - `volunteer_opportunities` - Volunteer opportunities
 - `users` - User accounts
 
-## 🚢 Deployment
 
 ### Build for production:
 ```bash
@@ -88,15 +87,3 @@ npm start
 2. Import project in Vercel
 3. Add environment variables
 4. Deploy
-
-## 📝 License
-
-This project is created for the 2025-26 Washington TSA Webmaster competition.
-
-## 👥 Contributors
-
-Built for the TSA Webmaster competition by the HubIO team.
-
----
-
-**HubIO** - Connecting communities with resources, support, and opportunities for growth.

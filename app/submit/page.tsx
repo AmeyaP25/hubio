@@ -598,6 +598,11 @@ function SubmitPageContent() {
 
 export default function SubmitResourcePage() {
   return (
-    <SubmitPageContent />
+    <AuthRequired 
+      featureName="submitting resources" 
+      description="Help our community grow by sharing resources. Please sign in to submit a new organization or service for review."
+    >
+      <SubmitPageContent />
+    </AuthRequired>
   )
 }

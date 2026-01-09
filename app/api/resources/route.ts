@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
         name,
         category,
         description,
-        address: address || null,
+        address: address || '', // Address is NOT NULL in staging table
         phone,
         email,
         website: website || null,
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         services: services || [],
         languages: languages || [],
         accessibility: accessibility || [],
-        location: location || null,
+        // Removed location as it's not in the resource_submissions staging table schema
         submitted_by: userId,
         status: 'pending',
       })

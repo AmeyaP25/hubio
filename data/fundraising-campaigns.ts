@@ -720,11 +720,7 @@ export const fundraisingCampaigns: FundraisingCampaign[] = [
     raised: 34200,
     donors: 256,
     category: 'Health & Wellness',
-<<<<<<< HEAD
     organizer: 'Communify',
-=======
-    organizer: 'HubIO',
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     organizerId: 'org-28',
     location: pittsburghLocation,
     deadline: new Date('2026-12-31'),

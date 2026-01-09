@@ -17,7 +17,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
-<<<<<<< HEAD
     try {
       const savedTheme = localStorage.getItem('theme') as Theme
       if (savedTheme) {
@@ -30,21 +29,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       // Ignore localStorage errors
       console.error('Theme initialization error:', error)
-=======
-    const savedTheme = localStorage.getItem('theme') as Theme
-    if (savedTheme) {
-      setTheme(savedTheme)
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark')
-      document.documentElement.classList.add('dark')
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     }
   }, [])
 
   useEffect(() => {
     if (mounted) {
-<<<<<<< HEAD
       try {
         document.documentElement.classList.toggle('dark', theme === 'dark')
         localStorage.setItem('theme', theme)
@@ -52,10 +41,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         // Ignore localStorage errors
         console.error('Theme update error:', error)
       }
-=======
-      document.documentElement.classList.toggle('dark', theme === 'dark')
-      localStorage.setItem('theme', theme)
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     }
   }, [theme, mounted])
 

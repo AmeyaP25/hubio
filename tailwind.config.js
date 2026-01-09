@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-<<<<<<< HEAD
   darkMode: 'class',
-=======
-  darkMode: ['class', 'class'],
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -25,7 +21,6 @@ module.exports = {
               foreground: 'hsl(var(--popover-foreground))',
             },
             primary: {
-<<<<<<< HEAD
   				'50': '#fef9f0',
   				'100': '#fdf2e0',
   				'200': '#fae4c0',
@@ -51,44 +46,7 @@ module.exports = {
   				'800': '#A47A4A',
   				'900': '#946A3A',
   				DEFAULT: '#D4A574',
-=======
-  				'50': '#f0f9ff',
-  				'100': '#e0f2fe',
-  				'200': '#bae6fd',
-  				'300': '#7dd3fc',
-  				'400': '#38bdf8',
-  				'500': '#0ea5e9',
-  				'600': '#0284c7',
-  				'700': '#0369a1',
-  				'800': '#075985',
-  				'900': '#0c4a6e',
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				'50': '#fdf4ff',
-  				'100': '#fae8ff',
-  				'200': '#f5d0fe',
-  				'300': '#f0abfc',
-  				'400': '#e879f9',
-  				'500': '#d946ef',
-  				'600': '#c026d3',
-  				'700': '#a21caf',
-  				'800': '#86198f',
-  				'900': '#701a75',
-  				DEFAULT: 'hsl(var(--secondary))',
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   				foreground: 'hsl(var(--secondary-foreground))'
-  			},
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
@@ -268,4 +226,3 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
-

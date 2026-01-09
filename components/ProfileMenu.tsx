@@ -10,7 +10,6 @@
  * - User info and quick actions
  */
 
-<<<<<<< HEAD
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
@@ -20,16 +19,6 @@ import {
 import { getAuthService } from '@/lib/auth'
 import { useRouter } from 'next/navigation'
 import type { User as UserType } from '@/lib/types'
-=======
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  User, Settings, LogOut, Heart, Calendar, Award, 
-  Bell, HelpCircle, Shield, ChevronUp, Sparkles 
-} from 'lucide-react'
-import { getAuthService } from '@/lib/auth'
-import { useRouter } from 'next/navigation'
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 import {
   Avatar,
   AvatarFallback,
@@ -49,7 +38,6 @@ import { Button } from '@/components/ui/button'
 export default function ProfileMenu() {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
-<<<<<<< HEAD
   const [user, setUser] = useState<UserType | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const auth = getAuthService()
@@ -104,21 +92,12 @@ export default function ProfileMenu() {
       </motion.div>
     )
   }
-=======
-  const auth = getAuthService()
-  const user = auth.getCurrentUser()
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
-
   if (!user) {
     return (
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-<<<<<<< HEAD
         className="fixed bottom-6 left-6 z-50"
-=======
-        className="fixed bottom-6 right-6 z-50"
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       >
         <Button
           onClick={() => router.push('/login')}
@@ -132,23 +111,6 @@ export default function ProfileMenu() {
     )
   }
 
-<<<<<<< HEAD
-=======
-  const getInitials = (name: string) => {
-    return name
-      .split(' ')
-      .map(n => n[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2)
-  }
-
-  const handleLogout = () => {
-    auth.signOut()
-    router.push('/')
-  }
-
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   const menuItems = [
     {
       icon: User,
@@ -182,18 +144,6 @@ export default function ProfileMenu() {
     },
   ]
 
-<<<<<<< HEAD
-=======
-  if (user.role === 'admin' || user.role === 'moderator') {
-    menuItems.push({
-      icon: Shield,
-      label: 'Admin Dashboard',
-      href: '/admin/dashboard',
-      color: 'text-purple-600',
-    })
-  }
-
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   if (user.role === 'volunteer') {
     menuItems.push({
       icon: Sparkles,
@@ -203,7 +153,6 @@ export default function ProfileMenu() {
     })
   }
 
-<<<<<<< HEAD
   if (user.role === 'admin') {
     menuItems.push({
       icon: Shield,
@@ -213,35 +162,23 @@ export default function ProfileMenu() {
     })
   }
 
-=======
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   return (
     <motion.div
       initial={{ scale: 0, rotate: -180 }}
       animate={{ scale: 1, rotate: 0 }}
       transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-<<<<<<< HEAD
       className="fixed bottom-6 left-6 z-50"
-=======
-      className="fixed bottom-6 right-6 z-50"
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     >
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenuTrigger asChild>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-<<<<<<< HEAD
             type="button"
             className="relative h-16 w-16 rounded-full bg-[#8B6F47] dark:bg-[#D4A574] 
                      text-white dark:text-[#1C1B18] shadow-md hover:shadow-lg transition-all duration-200
                      border-2 border-white dark:border-[#1C1B18] cursor-pointer"
             style={{ pointerEvents: 'auto' }}
-=======
-            className="relative h-16 w-16 rounded-full bg-[#8B6F47] dark:bg-[#D4A574] 
-                     text-white dark:text-[#1C1B18] shadow-md hover:shadow-lg transition-all duration-200
-                     border-2 border-white dark:border-[#1C1B18]"
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           >
             <Avatar className="h-full w-full">
               <AvatarImage src={user.avatar} alt={user.name} />
@@ -267,17 +204,10 @@ export default function ProfileMenu() {
         </DropdownMenuTrigger>
 
         <DropdownMenuContent
-<<<<<<< HEAD
           align="start"
           className="w-80 p-2 bg-white dark:bg-[#2A2824] 
                    border border-[#E8E0D6] dark:border-[#4A4844] rounded-lg shadow-md
                    ml-4 mb-4"
-=======
-          align="end"
-          className="w-80 p-2 bg-white dark:bg-[#2A2824] 
-                   border border-[#E8E0D6] dark:border-[#4A4844] rounded-lg shadow-md
-                   mr-4 mb-4"
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           sideOffset={10}
         >
           {/* Profile Header */}

@@ -13,10 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-<<<<<<< HEAD
     "types": ["jest", "@testing-library/jest-dom"],
-=======
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     "plugins": [
       {
         "name": "next"
@@ -29,4 +26,3 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
-

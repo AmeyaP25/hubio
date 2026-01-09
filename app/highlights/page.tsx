@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { Heart, MapPin, Phone, Mail, Globe, ArrowRight, Users, Calendar, Star, Clock, Languages, Award } from 'lucide-react'
-<<<<<<< HEAD
 import Link from 'next/link'
 import { useFavorites } from '@/contexts/FavoritesContext'
 import { useData } from '@/contexts/DataContext'
@@ -25,21 +24,6 @@ export default function HighlightsPage() {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 
                           dark:from-[#1C1B18] dark:via-gray-800 dark:to-primary-900/20">
-=======
-import { resources } from '@/data/resources'
-import Link from 'next/link'
-import { useFavorites } from '@/contexts/FavoritesContext'
-
-export default function HighlightsPage() {
-  const featuredResources = resources.filter((r) => r.featured)
-  const { isFavorite, toggleFavorite } = useFavorites()
-
-  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 
-                          dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -66,11 +50,7 @@ export default function HighlightsPage() {
       </section>
 
       {/* Featured Resources */}
-<<<<<<< HEAD
       <section className="section-padding bg-gradient-to-br from-[#FAF9F6] via-white to-primary-50/30 dark:from-[#1C1B18] dark:via-gray-900 dark:to-primary-900/10">
-=======
-      <section className="section-padding bg-white dark:bg-gray-900">
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         <div className="container-custom">
           <div className="space-y-16">
             {featuredResources.map((resource, index) => (
@@ -136,7 +116,6 @@ function FeaturedResourceCard({ resource, index, isFavorite, onToggleFavorite }:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-<<<<<<< HEAD
       className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
     >
       {/* Image/Icon Section */}
@@ -145,17 +124,6 @@ function FeaturedResourceCard({ resource, index, isFavorite, onToggleFavorite }:
           whileHover={{ scale: 1.02 }}
           className="relative aspect-square rounded-[3rem] bg-gradient-to-br from-[#8B6F47] to-[#D4A574] flex items-center justify-center 
                      overflow-hidden shadow-2xl group"
-=======
-      className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}
-    >
-      {/* Image/Icon Section */}
-      <div className={`flex-1 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="relative h-64 md:h-96 rounded-3xl bg-gradient-to-br from-primary-100 to-secondary-100 
-                     dark:from-primary-900/30 dark:to-secondary-900/30 flex items-center justify-center 
-                     overflow-hidden shadow-2xl"
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         >
           <motion.div
             animate={{
@@ -167,7 +135,6 @@ function FeaturedResourceCard({ resource, index, isFavorite, onToggleFavorite }:
               repeat: Infinity,
               repeatType: 'reverse',
             }}
-<<<<<<< HEAD
             className="absolute inset-0 bg-black/10 opacity-20"
           />
           <Heart className="w-32 h-32 text-white relative z-10 opacity-20" />
@@ -175,31 +142,11 @@ function FeaturedResourceCard({ resource, index, isFavorite, onToggleFavorite }:
             <div className="bg-white/20 backdrop-blur-md rounded-full p-8 shadow-2xl border border-white/20">
               <Users className="w-16 h-16 text-white" />
             </div>
-=======
-            className="absolute inset-0 bg-gradient-to-br from-primary-200/50 to-secondary-200/50 
-                       dark:from-primary-800/30 dark:to-secondary-800/30"
-          />
-          <Heart className="w-32 h-32 text-primary-600 dark:text-primary-400 relative z-10 opacity-20" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-full p-8 shadow-2xl 
-                         border border-white/30 dark:border-gray-700/30"
-              style={{
-                backdropFilter: 'saturate(180%) blur(20px)',
-                WebkitBackdropFilter: 'saturate(180%) blur(20px)',
-              }}
-            >
-              <Users className="w-16 h-16 text-primary-600 dark:text-primary-400" />
-            </motion.div>
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           </div>
         </motion.div>
       </div>
 
       {/* Content Section */}
-<<<<<<< HEAD
       <div className="flex-1 w-full">
         <div className="bg-white dark:bg-[#1F1B28] rounded-[2.5rem] shadow-xl p-10 border border-[#E8E0D6] dark:border-[#2c2c3e] relative overflow-hidden">
           {/* Accent Glow */}
@@ -301,153 +248,6 @@ function FeaturedResourceCard({ resource, index, isFavorite, onToggleFavorite }:
               </Link>
             </div>
           </div>
-=======
-      <div className={`flex-1 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl p-8 
-                        border border-white/30 dark:border-gray-700/30"
-              style={{
-                backdropFilter: 'saturate(180%) blur(20px)',
-                WebkitBackdropFilter: 'saturate(180%) blur(20px)',
-              }}
-        >
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <Star className="w-6 h-6 text-yellow-500 fill-yellow-500" />
-              <span className="text-primary-600 dark:text-primary-400 font-semibold">Featured Resource</span>
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={onToggleFavorite}
-              className={`p-2 rounded-2xl transition-all ${
-                isFavorite
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-              }`}
-            >
-              <Heart className={`w-5 h-5 ${isFavorite ? 'fill-current' : ''}`} />
-            </motion.button>
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white mb-4">
-            {resource.name}
-          </h2>
-          
-          {resource.rating && (
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-4 h-4 ${
-                      i < Math.floor(resource.rating!)
-                        ? 'text-yellow-400 fill-yellow-400'
-                        : 'text-gray-300 dark:text-gray-600'
-                    }`}
-                  />
-                ))}
-              </div>
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                {resource.rating} ({resource.reviewCount} reviews)
-              </span>
-            </div>
-          )}
-          
-          <div className="mb-4">
-            <span className="inline-block px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 
-                           dark:text-primary-300 text-sm font-medium rounded-full">
-              {resource.category}
-            </span>
-          </div>
-
-          <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-6">
-            {resource.description}
-          </p>
-
-          <div className="space-y-3 mb-6">
-            {resource.hours && (
-              <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0" />
-                <span className="text-gray-700 dark:text-gray-300">{resource.hours}</span>
-              </div>
-            )}
-            <div className="flex items-start gap-3">
-              <MapPin className="w-5 h-5 text-primary-600 dark:text-primary-400 mt-1 flex-shrink-0" />
-              <span className="text-gray-700 dark:text-gray-300">{resource.address}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0" />
-              <a href={`tel:${resource.phone}`} className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
-                {resource.phone}
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0" />
-              <a href={`mailto:${resource.email}`} className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
-                {resource.email}
-              </a>
-            </div>
-            {resource.languages && resource.languages.length > 0 && (
-              <div className="flex items-center gap-3">
-                <Languages className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0" />
-                <span className="text-gray-700 dark:text-gray-300">{resource.languages.join(', ')}</span>
-              </div>
-            )}
-            <div className="flex items-center gap-3">
-              <Globe className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0" />
-              <a
-                href={resource.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
-              >
-                Visit Website
-              </a>
-            </div>
-          </div>
-
-          {resource.services && resource.services.length > 0 && (
-            <div className="mb-6">
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
-                <Award className="w-4 h-4" />
-                Services Offered
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {resource.services.map((service: string) => (
-                  <span
-                    key={service}
-                    className="px-3 py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 
-                             text-sm rounded-full border border-primary-200 dark:border-primary-800"
-                  >
-                    {service}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="flex flex-wrap gap-2 mb-6">
-            {resource.tags.map((tag: string) => (
-              <span
-                key={tag}
-                className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <Link href="/directory">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary flex items-center gap-2 w-full justify-center"
-            >
-              View in Directory
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </Link>
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         </div>
       </div>
     </motion.div>

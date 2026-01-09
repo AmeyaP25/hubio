@@ -32,18 +32,9 @@ export class AnalyticsService {
     const opportunities = this.db.getAllVolunteerOpportunities()
     const campaigns = this.db.getAllCampaigns()
     const events = this.db.getUpcomingEvents()
-<<<<<<< HEAD
-=======
-    const posts = this.db.getAllPosts()
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
-
     // Calculate impact metrics
     const impactMetrics: ImpactMetrics = {
       livesImpacted: this.calculateLivesImpacted(resources, campaigns),
-<<<<<<< HEAD
-=======
-      volunteerHours: this.calculateVolunteerHours(opportunities),
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       fundsRaised: this.calculateFundsRaised(campaigns),
       resourcesShared: resources.length,
       eventsHosted: events.length,
@@ -54,10 +45,6 @@ export class AnalyticsService {
 
     return {
       totalResources: resources.length,
-<<<<<<< HEAD
-=======
-      totalVolunteers: this.countUniqueVolunteers(opportunities),
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       totalDonations: campaigns.reduce((sum, c) => sum + c.donors, 0),
       totalEvents: events.length,
       activeUsers: this.countActiveUsers(),

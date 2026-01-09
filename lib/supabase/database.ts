@@ -1,10 +1,5 @@
 import { supabase } from './client'
-<<<<<<< HEAD
 import { Resource, Event, FundraisingCampaign, EventRegistration } from '@/lib/types'
-=======
-import { Resource, Event, FundraisingCampaign, VolunteerOpportunity } from '@/lib/types'
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
-
 /**
  * Supabase Database Service
  * Modular database operations using Supabase
@@ -125,14 +120,10 @@ export class SupabaseDatabase {
       .order('created_at', { ascending: false })
     
     if (error) {
-<<<<<<< HEAD
       // Suppress "table not found" errors - table may not exist yet
       if (error.code !== 'PGRST205') {
         console.error('Error fetching campaigns:', error)
       }
-=======
-      console.error('Error fetching campaigns:', error)
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       return []
     }
     
@@ -226,14 +217,10 @@ export class SupabaseDatabase {
       .order('date', { ascending: true })
     
     if (error) {
-<<<<<<< HEAD
       // Suppress "table not found" errors - table may not exist yet
       if (error.code !== 'PGRST205') {
         console.error('Error fetching events:', error)
       }
-=======
-      console.error('Error fetching events:', error)
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       return []
     }
     
@@ -306,7 +293,6 @@ export class SupabaseDatabase {
     return !error
   }
 
-<<<<<<< HEAD
   async getEventById(id: string): Promise<Event | null> {
     const { data, error } = await supabase
       .from('events')
@@ -319,59 +305,12 @@ export class SupabaseDatabase {
     return this.mapEventFromSupabase(data)
   }
 
-  // ============================================================================
-  // EVENT REGISTRATIONS
-  // ============================================================================
-  
-  async createEventRegistration(registration: Omit<EventRegistration, 'id'>): Promise<EventRegistration> {
-    const { data, error } = await supabase
-      .from('event_registrations')
-      .insert({
-        event_id: registration.eventId,
-        user_id: registration.userId,
-        status: registration.status,
-        registered_at: registration.registeredAt.toISOString(),
-=======
-  // ============================================================================
-  // VOLUNTEER OPPORTUNITIES
-  // ============================================================================
-  
-  async getAllVolunteerOpportunities(): Promise<VolunteerOpportunity[]> {
-    const { data, error } = await supabase
-      .from('volunteer_opportunities')
-      .select('*')
-      .order('created_at', { ascending: false })
-    
-    if (error) {
-      console.error('Error fetching volunteer opportunities:', error)
-      return []
-    }
-    
-    return this.mapVolunteerOpportunitiesFromSupabase(data || [])
-  }
-
-  async createVolunteerOpportunity(opportunity: Omit<VolunteerOpportunity, 'id' | 'createdAt' | 'updatedAt'>): Promise<VolunteerOpportunity> {
-    const { data, error } = await supabase
-      .from('volunteer_opportunities')
-      .insert({
-        title: opportunity.title,
-        description: opportunity.description,
-        organization: opportunity.organization,
-        organization_id: opportunity.organizationId,
-        category: opportunity.category,
-        location: opportunity.location,
-        skills_required: opportunity.skills || [],
-        time_commitment: opportunity.duration || '',
-        age_requirement: '',
-        status: 'active',
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
-      })
+  // =====================================================================      })
       .select()
       .single()
     
     if (error) throw error
     
-<<<<<<< HEAD
     return this.mapEventRegistrationFromSupabase(data)
   }
 
@@ -424,48 +363,10 @@ export class SupabaseDatabase {
       .delete()
       .eq('event_id', eventId)
       .eq('user_id', userId)
-=======
-    return this.mapVolunteerOpportunityFromSupabase(data)
-  }
-
-  async updateVolunteerOpportunity(id: string, updates: Partial<VolunteerOpportunity>): Promise<VolunteerOpportunity | null> {
-    const updateData: any = {}
-    
-    if (updates.title !== undefined) updateData.title = updates.title
-    if (updates.description !== undefined) updateData.description = updates.description
-    if (updates.organization !== undefined) updateData.organization = updates.organization
-    if (updates.organizationId !== undefined) updateData.organization_id = updates.organizationId
-    if (updates.category !== undefined) updateData.category = updates.category
-    if (updates.location !== undefined) updateData.location = updates.location
-    if (updates.skills !== undefined) updateData.skills_required = updates.skills
-    if (updates.duration !== undefined) updateData.time_commitment = updates.duration
-    if (updates.status !== undefined) updateData.status = updates.status
-    
-    updateData.updated_at = new Date().toISOString()
-    
-    const { data, error } = await supabase
-      .from('volunteer_opportunities')
-      .update(updateData)
-      .eq('id', id)
-      .select()
-      .single()
-    
-    if (error || !data) return null
-    
-    return this.mapVolunteerOpportunityFromSupabase(data)
-  }
-
-  async deleteVolunteerOpportunity(id: string): Promise<boolean> {
-    const { error } = await supabase
-      .from('volunteer_opportunities')
-      .delete()
-      .eq('id', id)
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     
     return !error
   }
 
-<<<<<<< HEAD
   private mapEventRegistrationFromSupabase(data: any): EventRegistration {
     return {
       id: data.id,
@@ -476,8 +377,6 @@ export class SupabaseDatabase {
     }
   }
 
-=======
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   // ============================================================================
   // MAPPING FUNCTIONS
   // ============================================================================
@@ -560,36 +459,6 @@ export class SupabaseDatabase {
       updatedAt: new Date(item.updated_at),
     }
   }
-<<<<<<< HEAD
-=======
-
-  private mapVolunteerOpportunitiesFromSupabase(data: any[]): VolunteerOpportunity[] {
-    return data.map(item => this.mapVolunteerOpportunityFromSupabase(item))
-  }
-
-  private mapVolunteerOpportunityFromSupabase(item: any): VolunteerOpportunity {
-    return {
-      id: item.id,
-      title: item.title,
-      description: item.description,
-      organization: item.organization,
-      organizationId: item.organization_id,
-      category: item.category,
-      date: new Date(),
-      time: '',
-      location: item.location || { lat: 40.4406, lng: -79.9961, address: '', city: '', state: 'PA', zipCode: '' },
-      volunteersNeeded: 0,
-      volunteersSignedUp: 0,
-      skills: item.skills_required || [],
-      requirements: [],
-      remote: false,
-      duration: item.time_commitment || '',
-      status: item.status as any,
-      createdAt: new Date(item.created_at),
-      updatedAt: new Date(item.updated_at),
-    }
-  }
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 }
 
 // Singleton instance
@@ -601,7 +470,3 @@ export function getSupabaseDatabase(): SupabaseDatabase {
   }
   return dbInstance
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b

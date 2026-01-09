@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-<<<<<<< HEAD
 import { resolveSupabaseUrl, DEFAULT_SUPABASE_ANON_KEY } from './url'
 
 const supabaseUrl = resolveSupabaseUrl(process.env.NEXT_PUBLIC_SUPABASE_URL)
@@ -14,14 +13,6 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     storage: typeof window !== 'undefined' ? window.localStorage : undefined,
   },
 })
-=======
-
-const supabaseUrl = 'https://qyiqvodabfsovjjgjdxs.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5aXF2b2RhYmZzb3ZqamdqZHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI2MzUxMzksImV4cCI6MjA3ODIxMTEzOX0.YQ7tT-q1dk_krROobItrn7sxVmIxut7VGNR7WaonFEg'
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
-
 // Database table types
 export interface Database {
   public: {
@@ -53,7 +44,6 @@ export interface Database {
         Insert: Omit<Database['public']['Tables']['resources']['Row'], 'id' | 'created_at' | 'updated_at'>
         Update: Partial<Database['public']['Tables']['resources']['Row']>
       }
-<<<<<<< HEAD
       resource_submissions: {
         Row: {
           id: string
@@ -82,8 +72,6 @@ export interface Database {
         Insert: Omit<Database['public']['Tables']['resource_submissions']['Row'], 'id' | 'created_at' | 'updated_at'>
         Update: Partial<Database['public']['Tables']['resource_submissions']['Row']>
       }
-=======
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       events: {
         Row: {
           id: string

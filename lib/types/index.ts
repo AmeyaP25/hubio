@@ -18,23 +18,15 @@ export interface User {
   location?: Location
   preferences: UserPreferences
   karma: number
-<<<<<<< HEAD
   resources_count: number
   funds_raised: number
   events_count: number
-=======
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   badges: Badge[]
   createdAt: Date
   lastActiveAt: Date
 }
 
-<<<<<<< HEAD
 export type UserRole = 'volunteer' | 'organizer' | 'admin'
-=======
-export type UserRole = 'resident' | 'volunteer' | 'organizer' | 'admin' | 'moderator'
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
-
 export interface UserPreferences {
   theme: 'light' | 'dark' | 'auto'
   language: string
@@ -245,50 +237,11 @@ export interface EventRegistration {
   id: string
   eventId: string
   userId: string
-<<<<<<< HEAD
   status: 'registered' | 'attended' | 'cancelled' | 'waitlist'
   registeredAt: Date
   checkedInAt?: Date
   reminderSent?: boolean
   calendarAdded?: boolean
-=======
-  status: 'registered' | 'attended' | 'cancelled'
-  registeredAt: Date
-}
-
-// ============================================================================
-// COMMUNITY BOARD TYPES
-// ============================================================================
-
-export interface Post {
-  id: string
-  author: string
-  authorId: string
-  title: string
-  content: string
-  category: PostCategory
-  likes: number
-  comments: Comment[]
-  tags: string[]
-  pinned: boolean
-  status: 'active' | 'archived' | 'flagged'
-  createdAt: Date
-  updatedAt: Date
-}
-
-export type PostCategory = 'Events' | 'Volunteer' | 'Announcements' | 'Business' | 'Community' | 'Help' | 'Discussion'
-
-export interface Comment {
-  id: string
-  postId: string
-  author: string
-  authorId: string
-  content: string
-  likes: number
-  parentId?: string // For nested replies
-  createdAt: Date
-  updatedAt: Date
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 }
 
 // ============================================================================
@@ -332,10 +285,6 @@ export interface CommunityStats {
 
 export interface ImpactMetrics {
   livesImpacted: number
-<<<<<<< HEAD
-=======
-  volunteerHours: number
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   fundsRaised: number
   resourcesShared: number
   eventsHosted: number
@@ -348,29 +297,6 @@ export interface TrendData {
 }
 
 // ============================================================================
-<<<<<<< HEAD
-=======
-// AI & RECOMMENDATION TYPES
-// ============================================================================
-
-export interface Recommendation {
-  id: string
-  userId: string
-  type: 'resource' | 'volunteer' | 'event' | 'campaign'
-  itemId: string
-  score: number
-  reason: string
-  createdAt: Date
-}
-
-export interface AIResponse {
-  message: string
-  suggestions: Recommendation[]
-  confidence: number
-}
-
-// ============================================================================
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 // API RESPONSE TYPES
 // ============================================================================
 
@@ -379,10 +305,7 @@ export interface ApiResponse<T> {
   data?: T
   error?: string
   message?: string
-<<<<<<< HEAD
   errors?: Record<string, string | undefined>
-=======
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 }
 
 export interface PaginatedResponse<T> {

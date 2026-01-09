@@ -2,34 +2,15 @@
  * Authentication Service
  * 
  * Handles user authentication, authorization, and session management.
-<<<<<<< HEAD
  * Integrates with Supabase Auth for authentication.
  */
 
 import { User, UserRole, Badge } from '@/lib/types'
 import { supabase } from '@/lib/supabase/client'
-=======
- * Supports multiple auth providers (OAuth, email/password, etc.)
- * 
- * In production, this would integrate with:
- * - NextAuth.js for OAuth providers
- * - Supabase Auth
- * - Firebase Auth
- * - Custom JWT-based auth
- */
-
-import { User, UserRole } from '@/lib/types'
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
-
 /**
  * Authentication Provider Types
  */
-<<<<<<< HEAD
 export type AuthProvider = 'google' | 'email' | 'school'
-=======
-export type AuthProvider = 'google' | 'microsoft' | 'github' | 'email' | 'school'
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
-
 /**
  * Session Data
  */
@@ -67,11 +48,7 @@ export class AuthService {
       id: `user_${Date.now()}`,
       email: `user@${provider}.com`,
       name: `User from ${provider}`,
-<<<<<<< HEAD
       role: 'volunteer',
-=======
-      role: 'resident',
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       preferences: {
         theme: 'auto',
         language: 'en',
@@ -117,7 +94,6 @@ export class AuthService {
    * @returns Promise<Session>
    */
   async signInWithEmail(email: string, password: string): Promise<Session> {
-<<<<<<< HEAD
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -245,21 +221,6 @@ export class AuthService {
         avatar: userProfile.avatar,
         karma: userProfile.karma || 0,
         badges,
-=======
-    // In production, this would verify credentials against database
-    // For demo, we'll check localStorage for existing users
-    
-    const storedUsers = this.getStoredUsers()
-    let user = storedUsers.find(u => u.email === email)
-
-    if (!user) {
-      // Create new user if doesn't exist (for demo)
-      user = {
-        id: `user_${Date.now()}`,
-        email,
-        name: email.split('@')[0],
-        role: 'resident',
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         preferences: {
           theme: 'auto',
           language: 'en',
@@ -278,7 +239,6 @@ export class AuthService {
             fontSize: 'medium',
           },
         },
-<<<<<<< HEAD
         createdAt: new Date(userProfile.created_at),
         lastActiveAt: new Date(userProfile.last_active_at),
       }
@@ -296,184 +256,36 @@ export class AuthService {
       console.error('Failed to get session:', error)
       return null
     }
-=======
-        karma: 0,
-        badges: [],
-        createdAt: new Date(),
-        lastActiveAt: new Date(),
-      }
-      this.saveUser(user)
-    }
-
-    const session: Session = {
-      user,
-      token: this.generateToken(user),
-      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-      provider: 'email',
-    }
-
-    this.currentSession = session
-    this.saveSession(session)
-    
-    return session
-  }
-
-  /**
-   * Sign Up New User
-   * 
-   * @param email - User email
-   * @param password - User password
-   * @param name - User name
-   * @returns Promise<Session>
-   */
-  async signUp(email: string, password: string, name: string): Promise<Session> {
-    // Check if user already exists
-    const storedUsers = this.getStoredUsers()
-    if (storedUsers.find(u => u.email === email)) {
-      throw new Error('User with this email already exists')
-    }
-
-    // Create new user
-    const user: User = {
-      id: `user_${Date.now()}`,
-      email,
-      name,
-      role: 'resident',
-      preferences: {
-        theme: 'auto',
-        language: 'en',
-        notifications: {
-          email: true,
-          push: true,
-          sms: false,
-          events: true,
-          volunteer: true,
-          fundraising: true,
-        },
-        accessibility: {
-          highContrast: false,
-          textToSpeech: false,
-          dyslexiaFriendly: false,
-          fontSize: 'medium',
-        },
-      },
-      karma: 0,
-      badges: [],
-      createdAt: new Date(),
-      lastActiveAt: new Date(),
-    }
-
-    this.saveUser(user)
-
-    const session: Session = {
-      user,
-      token: this.generateToken(user),
-      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-      provider: 'email',
-    }
-
-    this.currentSession = session
-    this.saveSession(session)
-    
-    return session
-  }
-
-  /**
-   * Sign Out Current User
-   */
-  signOut(): void {
-    this.currentSession = null
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('hubio_session')
-    }
-  }
-
-  /**
-   * Get Current Session
-   * 
-   * @returns Session | null
-   */
-  getSession(): Session | null {
-    if (this.currentSession) {
-      return this.currentSession
-    }
-
-    // Try to load from storage
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('hubio_session')
-      if (stored) {
-        try {
-          const session = JSON.parse(stored)
-          // Check if session is still valid
-          if (new Date(session.expiresAt) > new Date()) {
-            this.currentSession = {
-              ...session,
-              user: { ...session.user, lastActiveAt: new Date() },
-            }
-            return this.currentSession
-          } else {
-            // Session expired
-            localStorage.removeItem('hubio_session')
-          }
-        } catch (error) {
-          console.error('Failed to parse session:', error)
-        }
-      }
-    }
-
-    return null
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 
   /**
    * Get Current User
    * 
-<<<<<<< HEAD
    * @returns Promise<User | null>
    */
   async getCurrentUser(): Promise<User | null> {
     const session = await this.getSession()
-=======
-   * @returns User | null
-   */
-  getCurrentUser(): User | null {
-    const session = this.getSession()
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     return session ? session.user : null
   }
 
   /**
    * Check if User is Authenticated
    * 
-<<<<<<< HEAD
    * @returns Promise<boolean>
    */
   async isAuthenticated(): Promise<boolean> {
     const session = await this.getSession()
     return session !== null
-=======
-   * @returns boolean
-   */
-  isAuthenticated(): boolean {
-    return this.getSession() !== null
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 
   /**
    * Check if User has Role
    * 
    * @param role - Required role
-<<<<<<< HEAD
    * @returns Promise<boolean>
    */
   async hasRole(role: UserRole): Promise<boolean> {
     const user = await this.getCurrentUser()
-=======
-   * @returns boolean
-   */
-  hasRole(role: UserRole): boolean {
-    const user = this.getCurrentUser()
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     return user?.role === role || user?.role === 'admin'
   }
 
@@ -481,17 +293,10 @@ export class AuthService {
    * Check if User has Any of the Roles
    * 
    * @param roles - Array of roles
-<<<<<<< HEAD
    * @returns Promise<boolean>
    */
   async hasAnyRole(roles: UserRole[]): Promise<boolean> {
     const user = await this.getCurrentUser()
-=======
-   * @returns boolean
-   */
-  hasAnyRole(roles: UserRole[]): boolean {
-    const user = this.getCurrentUser()
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     if (!user) return false
     return roles.includes(user.role) || user.role === 'admin'
   }
@@ -577,15 +382,9 @@ export function getAuthService(): AuthService {
  * 
  * Use this in API routes or components that require authentication
  */
-<<<<<<< HEAD
 export async function requireAuth(): Promise<User> {
   const auth = getAuthService()
   const user = await auth.getCurrentUser()
-=======
-export function requireAuth(): User {
-  const auth = getAuthService()
-  const user = auth.getCurrentUser()
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   
   if (!user) {
     throw new Error('Authentication required')
@@ -599,25 +398,15 @@ export function requireAuth(): User {
  * 
  * Use this to check if user has required role
  */
-<<<<<<< HEAD
 export async function requireRole(role: UserRole): Promise<User> {
   const auth = getAuthService()
   const user = await auth.getCurrentUser()
-=======
-export function requireRole(role: UserRole): User {
-  const auth = getAuthService()
-  const user = auth.getCurrentUser()
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   
   if (!user) {
     throw new Error('Authentication required')
   }
   
-<<<<<<< HEAD
   if (!(await auth.hasRole(role))) {
-=======
-  if (!auth.hasRole(role)) {
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     throw new Error(`Role '${role}' required`)
   }
   

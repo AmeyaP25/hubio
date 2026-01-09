@@ -63,16 +63,10 @@ export class VolunteerService {
    * @returns Total hours volunteered
    */
   getVolunteerHours(userId: string): number {
-<<<<<<< HEAD
     const applications = this.db.getApplicationsByUser(userId)
     return applications
       .filter(app => app.status === 'completed' && app.hoursCompleted)
       .reduce((sum, app) => sum + (app.hoursCompleted || 0), 0)
-=======
-    // In production, would query actual applications and completed opportunities
-    // For demo, return mock data
-    return 127 // Mock hours
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 
   /**
@@ -82,13 +76,8 @@ export class VolunteerService {
    * @returns Number of completed opportunities
    */
   getCompletedOpportunities(userId: string): number {
-<<<<<<< HEAD
     const applications = this.db.getApplicationsByUser(userId)
     return applications.filter(app => app.status === 'completed').length
-=======
-    // In production, would query actual completed applications
-    return 23 // Mock count
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 
   /**
@@ -98,15 +87,10 @@ export class VolunteerService {
    * @returns Active applications
    */
   getActiveApplications(userId: string): VolunteerApplication[] {
-<<<<<<< HEAD
     const applications = this.db.getApplicationsByUser(userId)
     return applications.filter(
       app => app.status === 'pending' || app.status === 'approved'
     )
-=======
-    // In production, would query actual applications
-    return [] // Mock empty for now
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 
   /**

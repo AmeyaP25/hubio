@@ -14,10 +14,16 @@ import {
   VolunteerOpportunity, 
   FundraisingCampaign, 
   Event, 
+<<<<<<< HEAD
   Donation,
   Badge,
   VolunteerApplication,
   EventRegistration
+=======
+  Post,
+  Donation,
+  Badge 
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 } from '@/lib/types'
 
 /**
@@ -27,16 +33,24 @@ import {
  * For this implementation, we'll use in-memory storage with persistence.
  */
 
+<<<<<<< HEAD
 import { ModerationAction, ContentFlag, ModerationRule } from '@/lib/types/moderation'
 import { Vendor, Product, ShoppingCart, Order, Commission } from '@/lib/types/marketplace'
 
 export interface Database {
   users: Map<string, User>
   resources: Map<string, Resource>
+=======
+export interface Database {
+  users: Map<string, User>
+  resources: Map<string, Resource>
+  volunteerOpportunities: Map<string, VolunteerOpportunity>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   employmentOpportunities: Map<string, any>
   fundraisingCampaigns: Map<string, FundraisingCampaign>
   donations: Map<string, Donation>
   events: Map<string, Event>
+<<<<<<< HEAD
   eventRegistrations: Map<string, EventRegistration>
   eventWaitlist: Map<string, EventRegistration>
   badges: Map<string, Badge>
@@ -54,6 +68,11 @@ export interface Database {
   usage: Map<string, any>
   apiKeys: Map<string, any>
   apiUsage: Map<string, any>
+=======
+  posts: Map<string, Post>
+  badges: Map<string, Badge>
+  recommendations: Map<string, any>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 }
 
 /**
@@ -65,6 +84,10 @@ export interface DatabaseIndexes {
   resourcesByCategory: Map<string, string[]>
   resourcesByLocation: Map<string, string[]>
   eventsByDate: Map<string, string[]>
+<<<<<<< HEAD
+=======
+  postsByCategory: Map<string, string[]>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   userBadges: Map<string, string[]>
 }
 
@@ -77,10 +100,15 @@ export function initializeDatabase(): Database {
   return {
     users: new Map(),
     resources: new Map(),
+<<<<<<< HEAD
+=======
+    volunteerOpportunities: new Map(),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     employmentOpportunities: new Map(),
     fundraisingCampaigns: new Map(),
     donations: new Map(),
     events: new Map(),
+<<<<<<< HEAD
     eventRegistrations: new Map(),
     eventWaitlist: new Map(),
     badges: new Map(),
@@ -98,6 +126,11 @@ export function initializeDatabase(): Database {
     usage: new Map(),
     apiKeys: new Map(),
     apiUsage: new Map(),
+=======
+    posts: new Map(),
+    badges: new Map(),
+    recommendations: new Map(),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 }
 
@@ -111,6 +144,10 @@ export function initializeIndexes(): DatabaseIndexes {
     resourcesByCategory: new Map(),
     resourcesByLocation: new Map(),
     eventsByDate: new Map(),
+<<<<<<< HEAD
+=======
+    postsByCategory: new Map(),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     userBadges: new Map(),
   }
 }
@@ -144,11 +181,21 @@ export class DatabaseService {
         // Reconstruct Maps from stored data
         if (data.users) this.db.users = new Map(data.users)
         if (data.resources) this.db.resources = new Map(data.resources)
+<<<<<<< HEAD
+=======
+        if (data.volunteerOpportunities) this.db.volunteerOpportunities = new Map(data.volunteerOpportunities)
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         if (data.employmentOpportunities) this.db.employmentOpportunities = new Map(data.employmentOpportunities)
         if (data.fundraisingCampaigns) this.db.fundraisingCampaigns = new Map(data.fundraisingCampaigns)
         if (data.donations) this.db.donations = new Map(data.donations)
         if (data.events) this.db.events = new Map(data.events)
+<<<<<<< HEAD
         if (data.badges) this.db.badges = new Map(data.badges)
+=======
+        if (data.posts) this.db.posts = new Map(data.posts)
+        if (data.badges) this.db.badges = new Map(data.badges)
+        if (data.recommendations) this.db.recommendations = new Map(data.recommendations)
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       }
     } catch (error) {
       console.error('Failed to load database from storage:', error)
@@ -203,10 +250,13 @@ export class DatabaseService {
     return updated
   }
 
+<<<<<<< HEAD
   getAllUsers(): User[] {
     return Array.from(this.db.users.values())
   }
 
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   // ========================================================================
   // RESOURCE OPERATIONS
   // ========================================================================
@@ -271,6 +321,7 @@ export class DatabaseService {
     return Array.from(this.db.volunteerOpportunities.values())
   }
 
+<<<<<<< HEAD
   // ========================================================================
   // VOLUNTEER APPLICATION OPERATIONS
   // ========================================================================
@@ -322,6 +373,8 @@ export class DatabaseService {
     return updated
   }
 
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   /**
    * Get All Resources
    * 
@@ -386,6 +439,7 @@ export class DatabaseService {
         donations.push(donation)
       }
     }
+<<<<<<< HEAD
     return donations.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
   }
 
@@ -405,6 +459,9 @@ export class DatabaseService {
 
   getAllDonations(): Donation[] {
     return Array.from(this.db.donations.values())
+=======
+    return donations
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 
   // ========================================================================
@@ -441,6 +498,7 @@ export class DatabaseService {
   }
 
   // ========================================================================
+<<<<<<< HEAD
   // EVENT REGISTRATION OPERATIONS
   // ========================================================================
 
@@ -550,6 +608,38 @@ export class DatabaseService {
     this.createEventRegistration(registration)
     
     return registration
+=======
+  // POST OPERATIONS
+  // ========================================================================
+
+  createPost(post: Post): Post {
+    this.db.posts.set(post.id, post)
+    this.updatePostIndexes(post)
+    this.saveToStorage()
+    return post
+  }
+
+  getPost(id: string): Post | undefined {
+    return this.db.posts.get(id)
+  }
+
+  getPostsByCategory(category: string): Post[] {
+    const ids = this.indexes.postsByCategory.get(category) || []
+    return ids.map(id => this.db.posts.get(id)).filter(Boolean) as Post[]
+  }
+
+  getAllPosts(): Post[] {
+    return Array.from(this.db.posts.values())
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+  }
+
+  private updatePostIndexes(post: Post): void {
+    const categoryIds = this.indexes.postsByCategory.get(post.category) || []
+    if (!categoryIds.includes(post.id)) {
+      categoryIds.push(post.id)
+      this.indexes.postsByCategory.set(post.category, categoryIds)
+    }
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 
   // ========================================================================
@@ -569,6 +659,7 @@ export class DatabaseService {
   getAllBadges(): Badge[] {
     return Array.from(this.db.badges.values())
   }
+<<<<<<< HEAD
 
   // ========================================================================
   // MODERATION OPERATIONS
@@ -778,6 +869,8 @@ export class DatabaseService {
   save(): void {
     this.saveToStorage()
   }
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 }
 
 // Singleton instance

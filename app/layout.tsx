@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Poppins, Merriweather } from 'next/font/google'
 import './globals.css'
+<<<<<<< HEAD
 import 'leaflet/dist/leaflet.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -13,6 +14,13 @@ import { DataProvider } from '@/contexts/DataContext'
 import ToastContainer from '@/components/Toast'
 import PagePreloader from '@/components/PagePreloader'
 import InitialDataLoader from '@/components/InitialDataLoader'
+=======
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import ProfileMenu from '@/components/ProfileMenu'
+import { ThemeProvider } from '@/contexts/ThemeContext'
+import { FavoritesProvider } from '@/contexts/FavoritesContext'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 import '@/lib/auth/init-admin'
 
 const poppins = Poppins({ 
@@ -30,7 +38,11 @@ const merriweather = Merriweather({
 })
 
 export const metadata: Metadata = {
+<<<<<<< HEAD
   title: 'Communify - Community Resource Hub',
+=======
+  title: 'HubIO - Community Resource Hub',
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   description: 'Your gateway to community resources, support services, and local programs. Connect, discover, and thrive together.',
   keywords: 'community resources, local services, non-profits, support services, community events',
 }
@@ -42,6 +54,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.variable} ${merriweather.variable}`} suppressHydrationWarning>
+<<<<<<< HEAD
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#8B6F47" />
@@ -103,6 +116,19 @@ export default function RootLayout({
             `,
           }}
         />
+=======
+      <body className="font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <ThemeProvider>
+          <FavoritesProvider>
+            <Navigation />
+            <main className="min-h-screen relative">
+              {children}
+            </main>
+            <Footer />
+            <ProfileMenu />
+          </FavoritesProvider>
+        </ThemeProvider>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       </body>
     </html>
   )

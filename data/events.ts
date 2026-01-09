@@ -745,7 +745,11 @@ export const events: Event[] = [
       state: 'PA',
       zipCode: '15222',
     },
+<<<<<<< HEAD
     organizer: 'Communify',
+=======
+    organizer: 'HubIO',
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     organizerId: 'org-24',
     capacity: 1000,
     registered: 567,

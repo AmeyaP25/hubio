@@ -7,13 +7,19 @@
  * calendar view, and event management features.
  */
 
+<<<<<<< HEAD
 import { useState, useMemo, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
+=======
+import { useState, useMemo } from 'react'
+import { motion } from 'framer-motion'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 import { Calendar, MapPin, Clock, Users, Filter, Grid, List, Calendar as CalendarIcon, ChevronLeft, ChevronRight } from 'lucide-react'
 import TabNavigation from '@/components/TabNavigation'
 import LiquidGlass from '@/components/LiquidGlass'
 import { Event } from '@/lib/types'
+<<<<<<< HEAD
 import { events as staticEvents } from '@/data/events'
 
 const categories = ['All', 'Community', 'Business', 'Youth', 'Education', 'Health', 'Arts', 'Sports', 'Health & Wellness', 'Volunteering', 'Employment', 'Environment']
@@ -68,6 +74,103 @@ export default function EventsPage() {
   const filteredEvents = useMemo(() => {
     return events.sort((a, b) => a.date.getTime() - b.date.getTime())
   }, [events])
+=======
+
+// Mock events data
+const mockEvents: Event[] = [
+  {
+    id: '1',
+    name: 'Community Food Drive',
+    description: 'Annual community food drive to support local families. Bring non-perishable items.',
+    category: 'Community',
+    date: new Date('2026-02-15'),
+    time: '10:00 AM - 2:00 PM',
+    location: {
+      lat: 47.6097,
+      lng: -122.3331,
+      address: '123 Main Street',
+      city: 'Seattle',
+      state: 'WA',
+      zipCode: '98101',
+    },
+    organizer: 'Community Food Bank',
+    organizerId: 'org_1',
+    registered: 45,
+    rsvpRequired: true,
+    tags: ['Food', 'Community', 'Volunteer'],
+    status: 'upcoming',
+    createdAt: new Date('2026-01-01'),
+    updatedAt: new Date('2026-01-01'),
+  },
+  {
+    id: '2',
+    name: 'Small Business Networking',
+    description: 'Monthly networking event for local business owners. Connect, share resources, and grow together.',
+    category: 'Business',
+    date: new Date('2026-02-20'),
+    time: '6:00 PM - 8:00 PM',
+    location: {
+      lat: 47.6145,
+      lng: -122.3415,
+      address: '456 Business Center',
+      city: 'Seattle',
+      state: 'WA',
+      zipCode: '98102',
+    },
+    organizer: 'Local Business Association',
+    organizerId: 'org_2',
+    registered: 23,
+    rsvpRequired: true,
+    ticketPrice: 15,
+    tags: ['Business', 'Networking', 'Professional'],
+    status: 'upcoming',
+    createdAt: new Date('2026-01-05'),
+    updatedAt: new Date('2026-01-05'),
+  },
+  {
+    id: '3',
+    name: 'Youth Art Workshop',
+    description: 'Free art workshop for youth ages 12-18. All materials provided. No experience necessary.',
+    category: 'Youth',
+    date: new Date('2026-02-18'),
+    time: '3:00 PM - 5:00 PM',
+    location: {
+      lat: 47.6062,
+      lng: -122.3321,
+      address: '789 Community Center',
+      city: 'Seattle',
+      state: 'WA',
+      zipCode: '98103',
+    },
+    organizer: 'Youth Empowerment Center',
+    organizerId: 'org_3',
+    registered: 18,
+    capacity: 25,
+    rsvpRequired: true,
+    tags: ['Youth', 'Arts', 'Education'],
+    status: 'upcoming',
+    createdAt: new Date('2026-01-10'),
+    updatedAt: new Date('2026-01-10'),
+  },
+]
+
+const categories = ['All', 'Community', 'Business', 'Youth', 'Education', 'Health', 'Arts', 'Sports']
+
+export default function EventsPage() {
+  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [viewMode, setViewMode] = useState<'grid' | 'list' | 'calendar'>('grid')
+  const [currentMonth, setCurrentMonth] = useState(new Date())
+
+  const filteredEvents = useMemo(() => {
+    let filtered = mockEvents
+
+    if (selectedCategory !== 'All') {
+      filtered = filtered.filter(e => e.category === selectedCategory)
+    }
+
+    return filtered.sort((a, b) => a.date.getTime() - b.date.getTime())
+  }, [selectedCategory])
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 
   const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear()
@@ -82,6 +185,7 @@ export default function EventsPage() {
   }
 
   const tabs = [
+<<<<<<< HEAD
     { id: 'upcoming', label: 'Upcoming', icon: Calendar, count: activeTab === 'upcoming' ? filteredEvents.length : undefined },
     { id: 'past', label: 'Past Events', icon: CalendarIcon, count: activeTab === 'past' ? filteredEvents.length : undefined },
     { id: 'my-events', label: 'My Events', icon: Users },
@@ -98,6 +202,13 @@ export default function EventsPage() {
     )
   }
 
+=======
+    { id: 'upcoming', label: 'Upcoming', icon: Calendar, count: filteredEvents.length },
+    { id: 'past', label: 'Past Events', icon: CalendarIcon },
+    { id: 'my-events', label: 'My Events', icon: Users },
+  ]
+
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50/30 
                     dark:from-gray-900 dark:via-gray-800 dark:to-primary-900/10 pt-20">
@@ -123,6 +234,7 @@ export default function EventsPage() {
           transition={{ delay: 0.1 }}
           className="mb-8"
         >
+<<<<<<< HEAD
           <div className="bg-white/80 dark:bg-[#1F1B28]/80 backdrop-blur-xl rounded-3xl p-4 md:p-6 border border-white/30 dark:border-[#2c2c3e]/50 shadow-xl">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               {/* Category Filter */}
@@ -185,6 +297,70 @@ export default function EventsPage() {
                 <ListView events={filteredEvents} onRSVP={handleRSVP} rsvping={rsvping} />
               ) : (
                 <GridView events={filteredEvents} onRSVP={handleRSVP} rsvping={rsvping} />
+=======
+          <LiquidGlass intensity="light">
+            <div className="p-6">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                {/* Category Filter */}
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => setSelectedCategory(cat)}
+                      className={`px-4 py-2 rounded-2xl text-sm font-medium transition-all ${
+                        selectedCategory === cat
+                          ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-lg'
+                          : 'bg-white/80 dark:bg-gray-700/80 text-gray-700 dark:text-gray-300 hover:shadow-lg'
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+
+                {/* View Mode Toggle */}
+                <div className="flex gap-2 bg-white/80 dark:bg-gray-700/80 rounded-2xl p-1">
+                  <button
+                    onClick={() => setViewMode('grid')}
+                    className={`p-2 rounded-xl transition-all ${
+                      viewMode === 'grid' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-400'
+                    }`}
+                  >
+                    <Grid className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode('list')}
+                    className={`p-2 rounded-xl transition-all ${
+                      viewMode === 'list' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-400'
+                    }`}
+                  >
+                    <List className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode('calendar')}
+                    className={`p-2 rounded-xl transition-all ${
+                      viewMode === 'calendar' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-400'
+                    }`}
+                  >
+                    <CalendarIcon className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </LiquidGlass>
+        </motion.div>
+
+        {/* Tab Navigation */}
+        <TabNavigation tabs={tabs} defaultTab="upcoming">
+          {(activeTab) => (
+            <div>
+              {viewMode === 'calendar' ? (
+                <CalendarView events={filteredEvents} currentMonth={currentMonth} setCurrentMonth={setCurrentMonth} />
+              ) : viewMode === 'list' ? (
+                <ListView events={filteredEvents} />
+              ) : (
+                <GridView events={filteredEvents} />
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               )}
             </div>
           )}
@@ -194,7 +370,11 @@ export default function EventsPage() {
   )
 }
 
+<<<<<<< HEAD
 function CalendarView({ events, currentMonth, setCurrentMonth, onRSVP, rsvping }: any) {
+=======
+function CalendarView({ events, currentMonth, setCurrentMonth }: any) {
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   const daysInMonth = getDaysInMonth(currentMonth)
   const firstDay = getFirstDayOfMonth(currentMonth)
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1)
@@ -278,9 +458,15 @@ function CalendarView({ events, currentMonth, setCurrentMonth, onRSVP, rsvping }
   )
 }
 
+<<<<<<< HEAD
 function GridView({ events, onRSVP, rsvping }: { events: Event[]; onRSVP: (event: Event) => void; rsvping: string | null }) {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+=======
+function GridView({ events }: { events: Event[] }) {
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       {events.map((event, index) => (
         <motion.div
           key={event.id}
@@ -288,6 +474,7 @@ function GridView({ events, onRSVP, rsvping }: { events: Event[]; onRSVP: (event
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
           whileHover={{ y: -5, scale: 1.02 }}
+<<<<<<< HEAD
           className="bg-white dark:bg-[#1F1B28] rounded-[2rem] border border-[#E8E0D6] dark:border-[#2c2c3e] overflow-hidden shadow-lg"
         >
           <div className="p-6 md:p-8">
@@ -345,13 +532,64 @@ function GridView({ events, onRSVP, rsvping }: { events: Event[]; onRSVP: (event
               )}
             </button>
           </div>
+=======
+        >
+          <LiquidGlass intensity="medium">
+            <div className="p-6">
+              <div className="flex items-start justify-between mb-4">
+                <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs rounded-full">
+                  {event.category}
+                </span>
+                {event.ticketPrice ? (
+                  <span className="text-lg font-bold text-gray-900 dark:text-white">
+                    ${event.ticketPrice}
+                  </span>
+                ) : (
+                  <span className="text-sm font-medium text-green-600 dark:text-green-400">Free</span>
+                )}
+              </div>
+
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{event.name}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">{event.description}</p>
+
+              <div className="space-y-2 mb-4">
+                <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                  <Calendar className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                  {event.date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                  <Clock className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                  {event.time}
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                  <MapPin className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                  {event.location.address}
+                </div>
+                {event.capacity && (
+                  <div className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                    <Users className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                    {event.registered} / {event.capacity} registered
+                  </div>
+                )}
+              </div>
+
+              <button className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-2 rounded-2xl font-semibold hover:shadow-lg transition-all">
+                {event.rsvpRequired ? 'RSVP Now' : 'Learn More'}
+              </button>
+            </div>
+          </LiquidGlass>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         </motion.div>
       ))}
     </div>
   )
 }
 
+<<<<<<< HEAD
 function ListView({ events, onRSVP, rsvping }: { events: Event[]; onRSVP: (event: Event) => void; rsvping: string | null }) {
+=======
+function ListView({ events }: { events: Event[] }) {
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   return (
     <div className="space-y-4">
       {events.map((event, index) => (
@@ -380,7 +618,11 @@ function ListView({ events, onRSVP, rsvping }: { events: Event[]; onRSVP: (event
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-primary-600" />
+<<<<<<< HEAD
                     <span suppressHydrationWarning>{event.date.toLocaleDateString()}</span>
+=======
+                    <span>{event.date.toLocaleDateString()}</span>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-primary-600" />
@@ -397,6 +639,7 @@ function ListView({ events, onRSVP, rsvping }: { events: Event[]; onRSVP: (event
                 </div>
               </div>
               <div className="flex-shrink-0">
+<<<<<<< HEAD
                 <button 
                   onClick={() => onRSVP(event)}
                   disabled={rsvping === event.id}
@@ -410,6 +653,10 @@ function ListView({ events, onRSVP, rsvping }: { events: Event[]; onRSVP: (event
                   ) : (
                     event.rsvpRequired ? 'RSVP Now' : 'Register Now'
                   )}
+=======
+                <button className="px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-2xl font-semibold hover:shadow-lg transition-all">
+                  {event.rsvpRequired ? 'RSVP' : 'View'}
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                 </button>
               </div>
             </div>

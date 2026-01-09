@@ -1,6 +1,7 @@
 // Import Resource and Event types from lib/types
 import { Resource, Event, Location } from '@/lib/types'
 
+<<<<<<< HEAD
 // Helper to get random coordinates around South Fayette Township
 function getRandomSouthFayetteCoords() {
   // South Fayette bounds (approximate)
@@ -20,6 +21,11 @@ function parseAddress(address: string, coords?: { lat: number; lng: number }): L
   const parts = address.split(',');
   const finalCoords = coords || getRandomSouthFayetteCoords();
   
+=======
+// Helper function to parse address into Location object
+function parseAddress(address: string, coords?: { lat: number; lng: number }): Location {
+  const parts = address.split(',');
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   if (parts.length >= 3) {
     const street = parts[0].trim();
     const city = parts[1].trim();
@@ -27,8 +33,13 @@ function parseAddress(address: string, coords?: { lat: number; lng: number }): L
     const state = stateZip[0];
     const zipCode = stateZip[1] || '';
     return {
+<<<<<<< HEAD
       lat: finalCoords.lat,
       lng: finalCoords.lng,
+=======
+      lat: coords?.lat || 40.4406,
+      lng: coords?.lng || -79.9961,
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       address: street,
       city: city,
       state: state,
@@ -36,8 +47,13 @@ function parseAddress(address: string, coords?: { lat: number; lng: number }): L
     };
   }
   return {
+<<<<<<< HEAD
     lat: finalCoords.lat,
     lng: finalCoords.lng,
+=======
+    lat: coords?.lat || 40.4406,
+    lng: coords?.lng || -79.9961,
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     address: address,
     city: '',
     state: 'PA',
@@ -52,14 +68,22 @@ export const resources: Resource[] = [
         category: 'Food Assistance',
         description: 'Serving Allegheny County and surrounding areas with nutritious meals and food assistance. Weekly food distribution, emergency food boxes, and nutrition education programs for South Fayette and Pittsburgh communities.',
         address: '1 N. Linden Street, Duquesne, PA 15110',
+<<<<<<< HEAD
         location: parseAddress('1 N. Linden Street, Duquesne, PA 15110'),
+=======
+        location: parseAddress('1 N. Linden Street, Duquesne, PA 15110', { lat: 40.3706, lng: -79.8500 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 460-3663',
         email: 'info@pittsburghfoodbank.org',
         website: 'https://www.pittsburghfoodbank.org',
         tags: ['Food', 'Nutrition', 'Emergency Assistance', 'Family Support'],
         featured: true,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.3706, lng: -79.8500 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.8,
         reviewCount: 124,
         hours: 'Mon-Fri: 8am-4pm, Sat: 9am-1pm',
@@ -75,7 +99,12 @@ export const resources: Resource[] = [
             time: '10:00 AM',
             description: 'Free food distribution for families in need at South Fayette location',
             location: {
+<<<<<<< HEAD
               ...getRandomSouthFayetteCoords(),
+=======
+              lat: 40.3800,
+              lng: -80.1800,
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               address: 'South Fayette Community Center',
               city: 'South Fayette',
               state: 'PA',
@@ -101,14 +130,22 @@ export const resources: Resource[] = [
         category: 'Housing',
         description: 'Comprehensive housing assistance for Allegheny County residents including emergency shelter, rental assistance, and housing counseling. Serving South Fayette and Pittsburgh communities with affordable housing solutions.',
         address: '625 Stanwix Street, Pittsburgh, PA 15222',
+<<<<<<< HEAD
         location: parseAddress('625 Stanwix Street, Pittsburgh, PA 15222'),
+=======
+        location: parseAddress('625 Stanwix Street, Pittsburgh, PA 15222', { lat: 40.4406, lng: -80.0000 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 355-8888',
         email: 'info@achsng.org',
         website: 'https://www.achsng.org',
         tags: ['Housing', 'Shelter', 'Rental Assistance', 'Counseling'],
         featured: true,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4406, lng: -80.0000 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.9,
         reviewCount: 89,
         hours: 'Mon-Fri: 8am-4pm',
@@ -124,7 +161,12 @@ export const resources: Resource[] = [
             time: '2:00 PM',
             description: 'Learn about rental assistance programs and housing rights in Allegheny County',
             location: {
+<<<<<<< HEAD
               ...getRandomSouthFayetteCoords(),
+=======
+              lat: 40.3800,
+              lng: -80.1800,
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               address: 'South Fayette Township Building',
               city: 'South Fayette',
               state: 'PA',
@@ -150,14 +192,22 @@ export const resources: Resource[] = [
         category: 'Youth Services',
         description: 'After-school programs, mentorship, career counseling, and life skills training for youth ages 6-18. Serving South Fayette and Pittsburgh communities with empowering programs.',
         address: '201 N. Bellefield Avenue, Pittsburgh, PA 15213',
+<<<<<<< HEAD
         location: parseAddress('201 N. Bellefield Avenue, Pittsburgh, PA 15213'),
+=======
+        location: parseAddress('201 N. Bellefield Avenue, Pittsburgh, PA 15213', { lat: 40.4442, lng: -79.9500 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 683-2227',
         email: 'info@bgcwpa.org',
         website: 'https://www.bgcwpa.org',
         tags: ['Youth', 'Education', 'Mentorship', 'Career Development'],
         featured: true,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4442, lng: -79.9500 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.7,
         reviewCount: 156,
         hours: 'Mon-Fri: 2pm-8pm, Sat: 10am-4pm',
@@ -173,7 +223,12 @@ export const resources: Resource[] = [
             time: '3:00 PM',
             description: 'Explore career opportunities and meet local Pittsburgh professionals',
             location: {
+<<<<<<< HEAD
               ...getRandomSouthFayetteCoords(),
+=======
+              lat: 40.3800,
+              lng: -80.1800,
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               address: 'South Fayette High School',
               city: 'South Fayette',
               state: 'PA',
@@ -199,14 +254,22 @@ export const resources: Resource[] = [
         category: 'Health Services',
         description: '24/7 free mental health crisis intervention and counseling services for Allegheny County residents. Serving South Fayette and Pittsburgh communities with immediate support and resources.',
         address: '333 North Braddock Avenue, Pittsburgh, PA 15208',
+<<<<<<< HEAD
         location: parseAddress('333 North Braddock Avenue, Pittsburgh, PA 15208'),
+=======
+        location: parseAddress('333 North Braddock Avenue, Pittsburgh, PA 15208', { lat: 40.4500, lng: -79.9000 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(888) 796-8226',
         email: 'info@resolve.org',
         website: 'https://www.upmc.com/services/behavioral-health/resolve',
         tags: ['Mental Health', 'Counseling', 'Support Groups', 'Crisis Intervention'],
         featured: false,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4500, lng: -79.9000 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.6,
         reviewCount: 98,
         hours: '24/7 Crisis Line Available, Office: Mon-Fri: 8am-6pm',
@@ -222,14 +285,22 @@ export const resources: Resource[] = [
         category: 'Senior Services',
         description: 'Comprehensive services for seniors in Allegheny County including meal delivery, transportation, social activities, and health screenings. Serving South Fayette and Pittsburgh area seniors.',
         address: '2900 Lebanon Church Road, West Mifflin, PA 15122',
+<<<<<<< HEAD
         location: parseAddress('2900 Lebanon Church Road, West Mifflin, PA 15122'),
+=======
+        location: parseAddress('2900 Lebanon Church Road, West Mifflin, PA 15122', { lat: 40.3639, lng: -79.9000 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 350-5460',
         email: 'info@aaa4seniors.org',
         website: 'https://www.aaa4seniors.org',
         tags: ['Seniors', 'Meals', 'Transportation', 'Social Activities'],
         featured: false,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.3639, lng: -79.9000 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.7,
         reviewCount: 112,
         hours: 'Mon-Fri: 8am-4:30pm',
@@ -246,14 +317,22 @@ export const resources: Resource[] = [
     category: 'Education',
     description: 'Free adult education, GED preparation, ESL classes, computer skills training, and job readiness programs. Building skills for success.',
     address: '987 Cedar Lane, City, ST 12345',
+<<<<<<< HEAD
     location: parseAddress('987 Cedar Lane, City, ST 12345'),
+=======
+    location: parseAddress('987 Cedar Lane, City, ST 12345', { lat: 47.6085, lng: -122.3375 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     phone: '(555) 678-9012',
     email: 'learn@communitycenter.org',
     website: 'https://learningcenter.org',
     tags: ['Education', 'GED', 'ESL', 'Job Training'],
     featured: false,
     verified: false,
+<<<<<<< HEAD
     coordinates: getRandomSouthFayetteCoords(),
+=======
+    coordinates: { lat: 47.6085, lng: -122.3375 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     rating: 4.5,
     reviewCount: 87,
     hours: 'Mon-Thu: 9am-8pm, Fri: 9am-5pm, Sat: 10am-3pm',
@@ -270,14 +349,22 @@ export const resources: Resource[] = [
         category: 'Legal Services',
         description: 'Free legal assistance for low-income Allegheny County residents. Services include housing law, family law, immigration, and consumer protection. Serving South Fayette and Pittsburgh communities.',
         address: '928 Penn Avenue, Pittsburgh, PA 15222',
+<<<<<<< HEAD
         location: parseAddress('928 Penn Avenue, Pittsburgh, PA 15222'),
+=======
+        location: parseAddress('928 Penn Avenue, Pittsburgh, PA 15222', { lat: 40.4406, lng: -79.9961 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 255-6700',
         email: 'info@nlsa.us',
         website: 'https://www.nlsa.us',
         tags: ['Legal', 'Housing Law', 'Family Law', 'Immigration'],
         featured: false,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4406, lng: -79.9961 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.9,
         reviewCount: 145,
         hours: 'Mon-Fri: 8am-5pm',
@@ -293,14 +380,22 @@ export const resources: Resource[] = [
         category: 'Health Services',
         description: 'Affordable primary healthcare services for Allegheny County residents. Preventive care, immunizations, and health screenings. Serving uninsured and underinsured community members in South Fayette and Pittsburgh.',
         address: '1200 Centre Avenue, Pittsburgh, PA 15219',
+<<<<<<< HEAD
         location: parseAddress('1200 Centre Avenue, Pittsburgh, PA 15219'),
+=======
+        location: parseAddress('1200 Centre Avenue, Pittsburgh, PA 15219', { lat: 40.4406, lng: -79.9800 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 321-4000',
         email: 'info@pchs.org',
         website: 'https://www.pchs.org',
         tags: ['Healthcare', 'Preventive Care', 'Immunizations', 'Primary Care'],
         featured: false,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4406, lng: -79.9800 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.8,
         reviewCount: 203,
         hours: 'Mon-Fri: 7am-6pm, Sat: 8am-2pm',
@@ -317,14 +412,22 @@ export const resources: Resource[] = [
         category: 'Employment',
         description: 'Comprehensive job search assistance, resume building, interview preparation, and career counseling. Connecting job seekers with employment opportunities throughout Allegheny County.',
         address: '425 6th Avenue, Pittsburgh, PA 15219',
+<<<<<<< HEAD
         location: parseAddress('425 6th Avenue, Pittsburgh, PA 15219'),
+=======
+        location: parseAddress('425 6th Avenue, Pittsburgh, PA 15219', { lat: 40.4406, lng: -79.9961 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 552-7100',
         email: 'info@careerlinkpa.org',
         website: 'https://www.careerlinkpa.org',
         tags: ['Employment', 'Job Search', 'Career Counseling', 'Resume Help'],
         featured: false,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4406, lng: -79.9961 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.6,
         reviewCount: 167,
         hours: 'Mon-Fri: 8am-4:30pm',
@@ -341,14 +444,22 @@ export const resources: Resource[] = [
         category: 'Support Services',
         description: 'Comprehensive support services for women including counseling, support groups, domestic violence services, and empowerment programs. Serving Allegheny County with confidential, safe services.',
         address: 'Confidential Location, Pittsburgh, PA',
+<<<<<<< HEAD
         location: parseAddress('Confidential Location, Pittsburgh, PA'),
+=======
+        location: parseAddress('Confidential Location, Pittsburgh, PA', { lat: 40.4406, lng: -79.9961 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 687-8005',
         email: 'info@wcspittsburgh.org',
         website: 'https://www.wcspittsburgh.org',
         tags: ['Women', 'Support Groups', 'Domestic Violence', 'Counseling'],
         featured: false,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4406, lng: -79.9961 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.7,
         reviewCount: 134,
         hours: '24/7 Crisis Line, Office: Mon-Fri: 9am-7pm',
@@ -364,14 +475,22 @@ export const resources: Resource[] = [
         category: 'Community Programs',
         description: 'Urban gardening program providing garden plots, seeds, tools, and education throughout Pittsburgh and Allegheny County. Promoting food security and community connection through gardening. Serving South Fayette area.',
         address: '6587 Hamilton Avenue, Pittsburgh, PA 15206',
+<<<<<<< HEAD
         location: parseAddress('6587 Hamilton Avenue, Pittsburgh, PA 15206'),
+=======
+        location: parseAddress('6587 Hamilton Avenue, Pittsburgh, PA 15206', { lat: 40.4600, lng: -79.9200 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 362-4769',
         email: 'info@growpittsburgh.org',
         website: 'https://www.growpittsburgh.org',
         tags: ['Gardening', 'Food Security', 'Education', 'Community'],
         featured: false,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4600, lng: -79.9200 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.8,
         reviewCount: 89,
         hours: 'Office: Mon-Fri: 9am-5pm, Gardens: Daily 6am-8pm',
@@ -388,14 +507,22 @@ export const resources: Resource[] = [
         category: 'Family Services',
         description: 'Affordable childcare services, early childhood education, and family support programs for Allegheny County families. Helping families access quality childcare and early learning opportunities in South Fayette and Pittsburgh.',
         address: '400 N. Lexington Avenue, Pittsburgh, PA 15208',
+<<<<<<< HEAD
         location: parseAddress('400 N. Lexington Avenue, Pittsburgh, PA 15208'),
+=======
+        location: parseAddress('400 N. Lexington Avenue, Pittsburgh, PA 15208', { lat: 40.4500, lng: -79.9000 }),
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         phone: '(412) 247-4700',
         email: 'info@elrc5.com',
         website: 'https://www.elrc5.com',
         tags: ['Childcare', 'Early Education', 'Family Support', 'Child Development'],
         featured: false,
         verified: true,
+<<<<<<< HEAD
         coordinates: getRandomSouthFayetteCoords(),
+=======
+        coordinates: { lat: 40.4500, lng: -79.9000 },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         rating: 4.9,
         reviewCount: 178,
         hours: 'Mon-Fri: 8am-5pm',
@@ -430,3 +557,7 @@ export const categories = [
 export const allTags = Array.from(
   new Set(resources.flatMap((r) => r.tags))
 ).sort()
+<<<<<<< HEAD
+=======
+
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b

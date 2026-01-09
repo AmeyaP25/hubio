@@ -71,16 +71,27 @@ export default function ResourceCard({ resource, index, viewMode = 'grid', onCom
       )}
 
       {/* Action Buttons */}
+<<<<<<< HEAD
       <div className="absolute top-4 left-4 z-10 flex gap-2 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+=======
+      <div className="absolute top-4 left-4 z-10 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         <button
           onClick={(e) => {
             e.stopPropagation()
             toggleFavorite(resource.id)
           }}
+<<<<<<< HEAD
           className={`p-2.5 rounded-xl transition-all duration-200 active:scale-90 ${
             favorite
               ? 'bg-[#8B6F47] dark:bg-[#D4A574] text-white dark:text-[#1C1B18] shadow-md'
               : 'bg-white/90 dark:bg-[#2A2824]/90 backdrop-blur-md text-[#6B5D47] dark:text-[#B8A584] shadow-sm border border-[#E8E0D6] dark:border-[#4A4844]'
+=======
+          className={`p-2 rounded-lg transition-all duration-200 ${
+            favorite
+              ? 'bg-[#8B6F47] dark:bg-[#D4A574] text-white dark:text-[#1C1B18] shadow-sm'
+              : 'bg-white dark:bg-[#2A2824] text-[#6B5D47] dark:text-[#B8A584] shadow-sm border border-[#E8E0D6] dark:border-[#4A4844] hover:border-[#D4C4B0] dark:hover:border-[#5A5854]'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           }`}
         >
           <Heart className={`w-4 h-4 ${favorite ? 'fill-current' : ''}`} />
@@ -90,9 +101,15 @@ export default function ResourceCard({ resource, index, viewMode = 'grid', onCom
             e.stopPropagation()
             handleShare()
           }}
+<<<<<<< HEAD
           className="p-2.5 rounded-xl bg-white/90 dark:bg-[#2A2824]/90 backdrop-blur-md text-[#6B5D47] dark:text-[#B8A584] 
                      shadow-sm border border-[#E8E0D6] dark:border-[#4A4844]
                      transition-all duration-200 active:scale-90"
+=======
+          className="p-2 rounded-lg bg-white dark:bg-[#2A2824] text-[#6B5D47] dark:text-[#B8A584] 
+                     shadow-sm border border-[#E8E0D6] dark:border-[#4A4844]
+                     transition-all duration-200 hover:border-[#D4C4B0] dark:hover:border-[#5A5854] hover:bg-[#F5F3F0] dark:hover:bg-[#353330]"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         >
           <Share2 className="w-4 h-4" />
         </button>
@@ -132,12 +149,20 @@ export default function ResourceCard({ resource, index, viewMode = 'grid', onCom
         </span>
 
         {/* Title */}
+<<<<<<< HEAD
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors break-all">
+=======
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           {resource.name}
         </h3>
 
         {/* Description */}
+<<<<<<< HEAD
         <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 break-all">
+=======
+        <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           {resource.description}
         </p>
 
@@ -151,7 +176,11 @@ export default function ResourceCard({ resource, index, viewMode = 'grid', onCom
           )}
           <div className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
             <MapPin className="w-4 h-4 text-primary-600 dark:text-primary-400 mt-0.5 flex-shrink-0" />
+<<<<<<< HEAD
             <span className="break-all">{resource.address}</span>
+=======
+            <span>{resource.address}</span>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
             <Phone className="w-4 h-4 text-primary-600 dark:text-primary-400 flex-shrink-0" />
@@ -178,13 +207,21 @@ export default function ResourceCard({ resource, index, viewMode = 'grid', onCom
           {resource.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
+<<<<<<< HEAD
               className="px-2 py-1 bg-[#f5ede1] dark:bg-[#2c2c3e] text-[#6B5D47] dark:text-[#B8A584] text-xs rounded"
+=======
+              className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
             >
               {tag}
             </span>
           ))}
           {resource.tags.length > 3 && (
+<<<<<<< HEAD
             <span className="px-2 py-1 bg-[#f5ede1] dark:bg-[#2c2c3e] text-[#6B5D47] dark:text-[#B8A584] text-xs rounded">
+=======
+            <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               +{resource.tags.length - 3} more
             </span>
           )}
@@ -198,6 +235,7 @@ export default function ResourceCard({ resource, index, viewMode = 'grid', onCom
           >
             View Details
           </Link>
+<<<<<<< HEAD
           {resource.website && (
             <a
               href={resource.website}
@@ -208,6 +246,16 @@ export default function ResourceCard({ resource, index, viewMode = 'grid', onCom
               <Globe className="w-4 h-4" />
             </a>
           )}
+=======
+          <Link
+            href={resource.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium px-3"
+          >
+            <Globe className="w-4 h-4" />
+          </Link>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           {onCompare && (
             <button
               onClick={(e) => {
@@ -216,8 +264,13 @@ export default function ResourceCard({ resource, index, viewMode = 'grid', onCom
               }}
               className={`ml-auto text-sm px-3 py-1 rounded-lg font-medium transition-colors ${
                 comparing
+<<<<<<< HEAD
                   ? 'bg-[#8B6F47] dark:bg-[#D4A574] text-white dark:text-[#0B0A0F]'
                   : 'bg-[#f5ede1] dark:bg-[#2c2c3e] text-[#6B5D47] dark:text-[#B8A584] hover:bg-[#E8E0D6] dark:hover:bg-[#3a3a4a]'
+=======
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               }`}
             >
               {comparing ? 'Comparing' : 'Compare'}

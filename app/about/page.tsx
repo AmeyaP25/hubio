@@ -6,9 +6,15 @@ import Link from 'next/link'
 
 export default function AboutPage() {
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-white dark:bg-[#0B0A0F] pt-20 text-gray-900 dark:text-white">
       {/* Hero Section */}
       <section className="section-padding bg-white dark:bg-[#0B0A0F]">
+=======
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20">
+      {/* Hero Section */}
+      <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -16,10 +22,17 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
+<<<<<<< HEAD
             <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">
               About Communify
             </h1>
             <p className="text-xl text-gray-600 dark:text-white/70 leading-relaxed">
+=======
+            <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+              About HubIO
+            </h1>
+            <p className="text-xl text-gray-600 leading-relaxed">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               Connecting communities with resources, support, and opportunities for growth.
               We believe in building stronger communities by making resources accessible to everyone.
             </p>
@@ -28,7 +41,11 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
+<<<<<<< HEAD
       <section className="section-padding border-t border-gray-200 dark:border-[#2c2c3e]">
+=======
+      <section className="section-padding bg-white dark:bg-gray-900">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -40,6 +57,7 @@ export default function AboutPage() {
               <div className="inline-block mb-4">
                 <Target className="w-12 h-12 text-primary-600 dark:text-primary-400" />
               </div>
+<<<<<<< HEAD
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white mb-4">
                 Our Mission
               </h2>
@@ -49,6 +67,17 @@ export default function AboutPage() {
                 access essential services, support organizations, and community programs.
               </p>
                   <p className="text-lg text-gray-600 dark:text-white/70 leading-relaxed">
+=======
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white mb-4">
+                Our Mission
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                HubIO exists to bridge the gap between community members and the resources they need.
+                We provide a centralized platform where individuals and families can easily discover and
+                access essential services, support organizations, and community programs.
+              </p>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                 Our mission is to empower communities by ensuring that every resident has access to the
                 information and resources necessary to thrive, regardless of their background or circumstances.
               </p>
@@ -94,7 +123,11 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white mb-4">
               Our Values
             </h2>
+<<<<<<< HEAD
             <p className="text-lg text-gray-600 dark:text-white/70 max-w-2xl mx-auto">
+=======
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               These core values guide everything we do and shape how we serve our community.
             </p>
           </motion.div>
@@ -146,6 +179,7 @@ export default function AboutPage() {
             ].map((value, index) => {
               const Icon = value.icon
               return (
+<<<<<<< HEAD
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
@@ -153,13 +187,29 @@ export default function AboutPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="bg-white/80 dark:bg-[#1f1b28]/80 backdrop-blur-xl rounded-3xl shadow-xl p-6 text-center border border-gray-200 dark:border-[#2c2c3e] hover:scale-105 transition-transform duration-300"
+=======
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-xl p-6 
+                             border border-white/30 dark:border-gray-700/30 text-center hover:scale-105 
+                             transition-transform duration-300"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                   style={{
                     backdropFilter: 'saturate(180%) blur(20px)',
                     WebkitBackdropFilter: 'saturate(180%) blur(20px)',
                   }}
                 >
+<<<<<<< HEAD
                   <div className={`inline-block p-4 rounded-full ${value.bgColor} dark:bg-[#2c2c3e] mb-4`}>
                     <Icon className={`w-8 h-8 ${value.iconColor} dark:text-[#E8D7B9]`} />
+=======
+                  <div className={`inline-block p-4 rounded-full ${value.bgColor} mb-4`}>
+                    <Icon className={`w-8 h-8 ${value.iconColor}`} />
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{value.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400">{value.description}</p>
@@ -184,7 +234,11 @@ export default function AboutPage() {
               How It Works
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+<<<<<<< HEAD
               Communify makes it easy to find and access community resources in three simple steps.
+=======
+              HubIO makes it easy to find and access community resources in three simple steps.
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
             </p>
           </motion.div>
 

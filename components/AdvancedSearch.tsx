@@ -1,13 +1,20 @@
 'use client'
 
+<<<<<<< HEAD
 import { useState, useEffect, useRef, useMemo } from 'react'
+=======
+import { useState, useEffect, useRef } from 'react'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 import { Search, X, TrendingUp, Clock, Star } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { allResources } from '@/data/resources'
 import { getDatabase } from '@/lib/db/schema'
 import Link from 'next/link'
+<<<<<<< HEAD
 import { Resource } from '@/lib/types'
 import { useData } from '@/contexts/DataContext'
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 
 interface SearchResult {
   id: string
@@ -16,6 +23,7 @@ interface SearchResult {
   matchType: 'name' | 'tag' | 'category' | 'description'
 }
 
+<<<<<<< HEAD
 interface AdvancedSearchProps {
   initialQuery?: string
   onQueryChange?: (value: string) => void
@@ -24,11 +32,16 @@ interface AdvancedSearchProps {
 
 export default function AdvancedSearch({ initialQuery = '', onQueryChange, resources: providedResources }: AdvancedSearchProps) {
   const [query, setQuery] = useState(initialQuery)
+=======
+export default function AdvancedSearch() {
+  const [query, setQuery] = useState('')
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   const [results, setResults] = useState<SearchResult[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const [recentSearches, setRecentSearches] = useState<string[]>([])
   const [popularSearches] = useState(['Food Assistance', 'Housing', 'Health Services', 'Education'])
   const searchRef = useRef<HTMLDivElement>(null)
+<<<<<<< HEAD
   const { resources: contextResources } = useData()
 
   const searchPool = useMemo<Resource[]>(() => {
@@ -47,6 +60,8 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
 
     return allResources
   }, [providedResources, contextResources])
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 
   useEffect(() => {
     const saved = localStorage.getItem('recentSearches')
@@ -72,6 +87,7 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
       return
     }
 
+<<<<<<< HEAD
     const lowerQuery = searchQuery.toLowerCase().trim()
     const queryWords = lowerQuery.split(/\s+/).filter(word => word.length > 0)
     const matched: SearchResult[] = []
@@ -118,12 +134,35 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
           category: resource.category, 
           matchType 
         })
+=======
+    const lowerQuery = searchQuery.toLowerCase()
+    const matched: SearchResult[] = []
+
+    // Get resources from database
+    const db = getDatabase()
+    const resources = db.getAllResources()
+    if (resources.length === 0) {
+      // Fallback to static data if database is empty
+      resources.push(...allResources)
+    }
+
+    resources.forEach((resource) => {
+      if (resource.name.toLowerCase().includes(lowerQuery)) {
+        matched.push({ id: resource.id, name: resource.name, category: resource.category, matchType: 'name' })
+      } else if (resource.category.toLowerCase().includes(lowerQuery)) {
+        matched.push({ id: resource.id, name: resource.name, category: resource.category, matchType: 'category' })
+      } else if (resource.tags.some((tag) => tag.toLowerCase().includes(lowerQuery))) {
+        matched.push({ id: resource.id, name: resource.name, category: resource.category, matchType: 'tag' })
+      } else if (resource.description.toLowerCase().includes(lowerQuery)) {
+        matched.push({ id: resource.id, name: resource.name, category: resource.category, matchType: 'description' })
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       }
     })
 
     // Sort by relevance (name > category > tag > description)
     matched.sort((a, b) => {
       const order = { name: 0, category: 1, tag: 2, description: 3 }
+<<<<<<< HEAD
       
       // Secondary sort: exact name match priority
       if (a.matchType === 'name' && b.matchType === 'name') {
@@ -151,18 +190,32 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialQuery])
 
+=======
+      return order[a.matchType] - order[b.matchType]
+    })
+
+    setResults(matched.slice(0, 8))
+  }
+
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setQuery(value)
     handleSearch(value)
+<<<<<<< HEAD
     onQueryChange?.(value)
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     setIsOpen(true)
   }
 
   const handleSelectResult = (result: SearchResult) => {
     setQuery(result.name)
     setIsOpen(false)
+<<<<<<< HEAD
     onQueryChange?.(result.name)
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     // Add to recent searches
     const updated = [result.name, ...recentSearches.filter((s) => s !== result.name)].slice(0, 5)
     setRecentSearches(updated)
@@ -173,7 +226,10 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
     setQuery('')
     setResults([])
     setIsOpen(false)
+<<<<<<< HEAD
     onQueryChange?.('')
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   }
 
   return (
@@ -186,16 +242,25 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
           onChange={handleInputChange}
           onFocus={() => setIsOpen(true)}
           placeholder="Search resources, services, organizations..."
+<<<<<<< HEAD
           className="w-full pl-12 pr-12 py-3.5 md:py-4 rounded-2xl md:rounded-3xl border-2 border-gray-200/50 dark:border-gray-700/50 
                      bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white 
                      focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none 
                      focus:ring-4 focus:ring-primary-500/10 dark:focus:ring-primary-400/10 
                      transition-all shadow-lg hover:shadow-xl active:scale-[0.99]"
+=======
+          className="w-full pl-12 pr-12 py-4 rounded-3xl border-2 border-gray-200/50 dark:border-gray-700/50 
+                     bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white 
+                     focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none 
+                     focus:ring-2 focus:ring-primary-500/20 dark:focus:ring-primary-400/20 
+                     transition-all shadow-lg hover:shadow-xl"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           style={{
             backdropFilter: 'saturate(180%) blur(20px)',
             WebkitBackdropFilter: 'saturate(180%) blur(20px)',
           }}
         />
+<<<<<<< HEAD
         <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {query && (
             <button
@@ -206,6 +271,16 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
             </button>
           )}
         </div>
+=======
+        {query && (
+          <button
+            onClick={clearSearch}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       </div>
 
       <AnimatePresence>
@@ -267,7 +342,10 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
                         onClick={() => {
                           setQuery(search)
                           handleSearch(search)
+<<<<<<< HEAD
                           onQueryChange?.(search)
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                         }}
                         className="w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors text-sm text-gray-700 dark:text-gray-300"
                       >
@@ -288,7 +366,10 @@ export default function AdvancedSearch({ initialQuery = '', onQueryChange, resou
                       onClick={() => {
                         setQuery(search)
                         handleSearch(search)
+<<<<<<< HEAD
                         onQueryChange?.(search)
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                       }}
                       className="w-full text-left px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors text-sm text-gray-700 dark:text-gray-300"
                     >

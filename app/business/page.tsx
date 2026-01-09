@@ -404,6 +404,7 @@ function BusinessListView({ businesses }: { businesses: Business[] }) {
                     <Clock className="w-4 h-4 text-primary-600" />
                     <span className="truncate">{business.hours}</span>
                   </div>
+<<<<<<< HEAD
                   {business.website && (
                     <div className="flex items-center gap-2">
                       <Globe className="w-4 h-4 text-primary-600" />
@@ -412,6 +413,14 @@ function BusinessListView({ businesses }: { businesses: Business[] }) {
                       </a>
                     </div>
                   )}
+=======
+                  <div className="flex items-center gap-2">
+                    <Globe className="w-4 h-4 text-primary-600" />
+                    <a href={business.website} target="_blank" rel="noopener" className="hover:text-primary-600">
+                      Website
+                    </a>
+                  </div>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                 </div>
               </div>
               <div className="flex-shrink-0">

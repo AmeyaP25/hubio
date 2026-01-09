@@ -1,11 +1,16 @@
 'use client'
 
+<<<<<<< HEAD
 import { useState, useEffect } from 'react'
+=======
+import { useState } from 'react'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Search, Heart, Users, Calendar, ArrowRight, Sparkles, Map, BarChart3, Star, Zap } from 'lucide-react'
 import Link from 'next/link'
 import AdvancedSearch from '@/components/AdvancedSearch'
 import ResourceInsights from '@/components/ResourceInsights'
+<<<<<<< HEAD
 import dynamic from 'next/dynamic'
 
 const InteractiveMap = dynamic(() => import('@/components/InteractiveMap'), {
@@ -19,11 +24,22 @@ const InteractiveMap = dynamic(() => import('@/components/InteractiveMap'), {
 
 import Testimonials from '@/components/Testimonials'
 import { useData } from '@/contexts/DataContext'
+=======
+import InteractiveMap from '@/components/InteractiveMap'
+import Testimonials from '@/components/Testimonials'
+import Gallery from '@/components/Gallery'
+import Fundraising from '@/components/Fundraising'
+import CommunityBoard from '@/components/CommunityBoard'
+import VolunteerOpportunities from '@/components/VolunteerOpportunities'
+import AIAssistant from '@/components/AIAssistant'
+import { allResources as resources } from '@/data/resources'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 
 export default function Home() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
+<<<<<<< HEAD
   
   // Use pre-loaded data from context - INSTANT
   const { resources, events, campaigns, volunteers } = useData()
@@ -33,6 +49,13 @@ export default function Home() {
     { value: `${resources.length}+`, label: 'Resources', icon: Heart, color: 'text-primary-600' },
     { value: `${events.length}+`, label: 'Events', icon: Calendar, color: 'text-green-600' },
     { value: `${campaigns.length}+`, label: 'Campaigns', icon: Users, color: 'text-secondary-600' },
+=======
+
+  const stats = [
+    { value: '250+', label: 'Resources', icon: Heart, color: 'text-primary-600' },
+    { value: '50+', label: 'Non-Profits', icon: Users, color: 'text-secondary-600' },
+    { value: '30+', label: 'Events Monthly', icon: Calendar, color: 'text-green-600' },
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     { value: '4.8', label: 'Avg Rating', icon: Star, color: 'text-yellow-600' },
   ]
 
@@ -41,7 +64,11 @@ export default function Home() {
       {/* Hero Section - Minimal Design */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden 
                           bg-[#FAF9F6] dark:bg-[#1C1B18]">
+<<<<<<< HEAD
         <motion.div style={{ opacity: opacity || 1 }} className="container-custom section-padding relative z-10">
+=======
+        <motion.div style={{ opacity }} className="container-custom section-padding relative z-10">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           <div className="text-center max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -52,27 +79,47 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6 }}
+<<<<<<< HEAD
                 className="text-4xl md:text-7xl font-display font-bold text-[#2C2416] dark:text-[#F5F3F0] mb-4 md:mb-6"
               >
                 Communify
+=======
+                className="text-5xl md:text-7xl font-display font-bold text-[#333333] dark:text-[#f5f5f5] mb-6"
+              >
+                HubIO
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
+<<<<<<< HEAD
                 className="text-lg md:text-2xl text-[#6B5D47] dark:text-[#B8A584] mb-4 font-light"
               >
                 /kəˈmjuː.nə.faɪ/
+=======
+                className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-4 font-light"
+              >
+                /ˈhəb aɪ oʊ/
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               </motion.p>
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
+<<<<<<< HEAD
                     className="text-base md:text-xl text-[#6B5D47] dark:text-[#B8A584] mb-8"
                   >
                     Your gateway to community resources in <span className="font-semibold text-[#8B6F47] dark:text-[#D4A574]">South Fayette & Pittsburgh</span>.
                     <br className="hidden md:block" />
                     <span className="font-medium text-[#8B6F47] dark:text-[#D4A574]">Connect. Discover. Thrive Together.</span>
+=======
+                    className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8"
+                  >
+                    Your gateway to community resources in <span className="font-semibold text-primary-700 dark:text-primary-400">South Fayette & Pittsburgh</span>.
+                    <br />
+                    <span className="font-medium text-primary-700 dark:text-primary-400">Connect. Discover. Thrive Together.</span>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                   </motion.p>
             </motion.div>
 
@@ -90,15 +137,23 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+<<<<<<< HEAD
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <Link href="/directory">
                 <button className="btn-primary text-lg px-8 py-4 flex items-center gap-2 justify-center w-full sm:w-auto">
+=======
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Link href="/directory">
+                <button className="btn-primary text-lg px-8 py-4 flex items-center gap-2">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                   Explore Resources
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </Link>
               <Link href="/highlights">
+<<<<<<< HEAD
                 <button className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto">
                   Featured Resources
                 </button>
@@ -109,6 +164,12 @@ export default function Home() {
                   Get Started
                 </button>
               </Link>
+=======
+                <button className="btn-secondary text-lg px-8 py-4">
+                  Featured Resources
+                </button>
+              </Link>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
             </motion.div>
 
             {/* Stats with enhanced design */}
@@ -116,7 +177,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
+<<<<<<< HEAD
               className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-5xl mx-auto px-4"
+=======
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
             >
               {stats.map((stat, index) => {
                 const Icon = stat.icon
@@ -128,17 +193,28 @@ export default function Home() {
                     transition={{ delay: 0.7 + index * 0.1 }}
                     whileHover={{ scale: 1.05, y: -5 }}
                     whileTap={{ scale: 0.95 }}
+<<<<<<< HEAD
                     className="text-center p-6 bg-white/80 dark:bg-[#2A2824]/80 backdrop-blur-xl 
                                rounded-3xl shadow-xl border border-[#E8E0D6]/50 dark:border-[#4A4844]/50
+=======
+                    className="text-center p-6 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl 
+                               rounded-3xl shadow-xl border border-white/30 dark:border-gray-700/30
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                                hover:shadow-2xl transition-all duration-300"
                     style={{
                       backdropFilter: 'saturate(180%) blur(20px)',
                       WebkitBackdropFilter: 'saturate(180%) blur(20px)',
                     }}
                   >
+<<<<<<< HEAD
                     <Icon className={`w-8 h-8 text-[#8B6F47] dark:text-[#D4A574] mx-auto mb-2`} />
                     <div className="text-3xl font-bold text-[#2C2416] dark:text-[#F5F3F0]">{stat.value}</div>
                     <div className="text-sm text-[#6B5D47] dark:text-[#B8A584]">{stat.label}</div>
+=======
+                    <Icon className={`w-8 h-8 text-[#666666] dark:text-[#999999] mx-auto mb-2`} />
+                    <div className="text-3xl font-bold text-[#333333] dark:text-[#f5f5f5]">{stat.value}</div>
+                    <div className="text-sm text-[#666666] dark:text-[#999999]">{stat.label}</div>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                   </motion.div>
                 )
               })}
@@ -163,7 +239,11 @@ export default function Home() {
       </section>
 
       {/* Interactive Map Section */}
+<<<<<<< HEAD
       <section id="map" className="section-padding bg-gradient-to-br from-[#FAF9F6] via-white to-primary-50/30 dark:from-[#1C1B18] dark:via-gray-800 dark:to-primary-900/10">
+=======
+      <section id="map" className="section-padding bg-gray-50 dark:bg-gray-800">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -182,6 +262,7 @@ export default function Home() {
               Discover community resources geographically. Click on markers to learn more about each organization.
             </p>
           </motion.div>
+<<<<<<< HEAD
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -190,11 +271,18 @@ export default function Home() {
           >
             <InteractiveMap resources={resources} />
           </motion.div>
+=======
+          <InteractiveMap resources={resources.slice(0, 6)} />
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         </div>
       </section>
 
       {/* Resource Insights Section */}
+<<<<<<< HEAD
       <section className="section-padding bg-gradient-to-br from-[#FAF9F6] via-white to-primary-50/30 dark:from-[#1C1B18] dark:via-gray-900 dark:to-primary-900/10">
+=======
+      <section className="section-padding bg-white dark:bg-gray-900">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         <div className="container-custom">
           <ResourceInsights />
         </div>
@@ -214,7 +302,11 @@ export default function Home() {
               Powerful Features
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+<<<<<<< HEAD
               Communify is your comprehensive community resource platform with advanced features designed to connect residents
+=======
+              HubIO is your comprehensive community resource platform with advanced features designed to connect residents
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               with essential services, support organizations, and local programs.
             </p>
           </motion.div>
@@ -224,7 +316,11 @@ export default function Home() {
               {
                 icon: Zap,
                 title: 'Advanced Search',
+<<<<<<< HEAD
                 description: 'Intelligent search with autocomplete and recent searches to help you find exactly what you need.',
+=======
+                description: 'Intelligent search with autocomplete, recent searches, and popular suggestions to help you find exactly what you need.',
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                 color: 'bg-[#D4A574]',
               },
               {
@@ -246,6 +342,15 @@ export default function Home() {
                 color: 'bg-[#8B6F47]',
               },
               {
+<<<<<<< HEAD
+=======
+                icon: Sparkles,
+                title: 'Smart Recommendations',
+                description: 'AI-powered recommendations based on your interests and browsing history to discover new resources.',
+                color: 'bg-[#D4A574]',
+              },
+              {
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                 icon: Heart,
                 title: 'Community First',
                 description: 'We prioritize the needs of our community, ensuring every resident has access to vital resources and support services.',
@@ -291,7 +396,11 @@ export default function Home() {
       </section>
 
       {/* Quick Links Section */}
+<<<<<<< HEAD
       <section className="section-padding bg-gradient-to-br from-[#FAF9F6] via-white to-primary-50/30 dark:from-[#1C1B18] dark:via-gray-800 dark:to-primary-900/10">
+=======
+      <section className="section-padding bg-gray-50 dark:bg-gray-800">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -366,10 +475,35 @@ export default function Home() {
         </div>
       </section>
 
+<<<<<<< HEAD
+=======
+      {/* Fundraising Section */}
+      <section id="fundraising">
+        <Fundraising />
+      </section>
+
+      {/* Volunteer Opportunities Section */}
+      <section id="volunteer">
+        <VolunteerOpportunities />
+      </section>
+
+      {/* Community Board Section */}
+      <section id="community">
+        <CommunityBoard />
+      </section>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 
       {/* Testimonials Section */}
       <Testimonials />
 
+<<<<<<< HEAD
+=======
+      {/* Gallery Section */}
+      <Gallery />
+
+      {/* AI Assistant - Floating */}
+      <AIAssistant />
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     </div>
   )
 }

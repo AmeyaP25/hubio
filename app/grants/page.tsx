@@ -238,7 +238,11 @@ export default function GrantsPage() {
                           <div className="flex items-center justify-between mb-4 p-3 bg-primary-50 dark:bg-primary-900/20 rounded-xl">
                             <div className="flex items-center gap-2">
                               <Calendar className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+<<<<<<< HEAD
                               <span className="text-sm font-medium text-gray-900 dark:text-white" suppressHydrationWarning>
+=======
+                              <span className="text-sm font-medium text-gray-900 dark:text-white">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                                 Deadline: {grant.deadline.toLocaleDateString()}
                               </span>
                             </div>

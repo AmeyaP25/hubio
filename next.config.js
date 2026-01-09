@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+<<<<<<< HEAD
   reactStrictMode: false,
   swcMinify: true,
   
@@ -49,6 +50,19 @@ const nextConfig = {
       transform: 'lucide-react/dist/esm/icons/{{member}}',
     },
   },
+=======
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+  // Optimize performance
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Performance optimizations
+  poweredByHeader: false,
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 }
 
 module.exports = nextConfig

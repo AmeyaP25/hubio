@@ -59,6 +59,7 @@ export function initializeDatabaseData() {
     })
   }
   
+<<<<<<< HEAD
   // Initialize Posts (only if not already in database)
   const existingPosts = db.getAllPosts()
   if (existingPosts.length === 0) {
@@ -76,12 +77,17 @@ export function initializeDatabaseData() {
     }
   }
   
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   console.log('✅ Database initialized with sample data')
   console.log(`   - ${db.getAllResources().length} resources`)
   console.log(`   - ${Array.from((db as any).db.events.values()).length} events`)
   console.log(`   - ${db.getAllVolunteerOpportunities().length} volunteer opportunities`)
   console.log(`   - ${db.getAllCampaigns().length} fundraising campaigns`)
+<<<<<<< HEAD
   console.log(`   - ${db.getAllPosts().length} posts`)
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 }
 
 // Auto-initialize on client-side

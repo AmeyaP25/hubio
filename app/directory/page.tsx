@@ -4,20 +4,31 @@ import { useState, useEffect, useMemo, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Filter, X, Grid3x3, List, Map as MapIcon, GitCompare, Star } from 'lucide-react'
+<<<<<<< HEAD
 import { categories } from '@/data/resources'
+=======
+import { allResources, categories } from '@/data/resources'
+import { getDatabase } from '@/lib/db/schema'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 import ResourceCard from '@/components/ResourceCard'
 import AdvancedSearch from '@/components/AdvancedSearch'
 import ResourceComparison from '@/components/ResourceComparison'
 import InteractiveMap from '@/components/InteractiveMap'
 import { useFavorites } from '@/contexts/FavoritesContext'
+<<<<<<< HEAD
 import { useData } from '@/contexts/DataContext'
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 
 function DirectoryContent() {
   const searchParams = useSearchParams()
   const initialQuery = searchParams.get('q') || ''
   const favoritesOnly = searchParams.get('favorites') === 'true'
   const { favorites, isFavorite } = useFavorites()
+<<<<<<< HEAD
   const { resources, isLoading } = useData()
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
   
   const [searchQuery, setSearchQuery] = useState(initialQuery)
   const [selectedCategory, setSelectedCategory] = useState('All Categories')
@@ -27,12 +38,30 @@ function DirectoryContent() {
   const [compareMode, setCompareMode] = useState(false)
   const [comparingIds, setComparingIds] = useState<string[]>([])
   const [allTags, setAllTags] = useState<string[]>([])
+<<<<<<< HEAD
 
   useEffect(() => {
     // Get tags from current resources
     const uniqueTags = Array.from(new Set(resources.flatMap((r) => r.tags))).sort() as string[]
     setAllTags(uniqueTags)
   }, [resources])
+=======
+  const [resources, setResources] = useState(allResources)
+
+  useEffect(() => {
+    // Load resources from database
+    const db = getDatabase()
+    const dbResources = db.getAllResources()
+    if (dbResources.length > 0) {
+      setResources(dbResources as typeof allResources)
+    }
+    
+    // Get tags from current resources
+    const currentResources = dbResources.length > 0 ? dbResources : allResources
+    const uniqueTags = Array.from(new Set(currentResources.flatMap((r) => r.tags))).sort() as string[]
+    setAllTags(uniqueTags)
+  }, [])
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 
   useEffect(() => {
     if (favoritesOnly) {
@@ -50,6 +79,7 @@ function DirectoryContent() {
 
     // Filter by search query
     if (searchQuery) {
+<<<<<<< HEAD
       const query = searchQuery.toLowerCase().trim()
       const queryWords = query.split(/\s+/).filter(word => word.length > 0)
       
@@ -78,6 +108,16 @@ function DirectoryContent() {
         if (!aNameMatch && bNameMatch) return 1
         return 0
       })
+=======
+      const query = searchQuery.toLowerCase()
+      filtered = filtered.filter(
+        (resource) =>
+          resource.name.toLowerCase().includes(query) ||
+          resource.description.toLowerCase().includes(query) ||
+          resource.tags.some((tag) => tag.toLowerCase().includes(query)) ||
+          resource.category.toLowerCase().includes(query)
+      )
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     }
 
     // Filter by category
@@ -92,10 +132,13 @@ function DirectoryContent() {
       )
     }
 
+<<<<<<< HEAD
     // Ensure verified is only checked if we are not an admin or if we explicitly want only verified
     // Actually, in the directory, we should probably only show verified resources unless they are featured
     filtered = filtered.filter(resource => resource.verified || resource.featured)
 
+=======
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
     return filtered
   }, [searchQuery, selectedCategory, selectedTags, favoritesOnly, isFavorite])
 
@@ -128,7 +171,11 @@ function DirectoryContent() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-[#FAF9F6] dark:bg-[#0B0A0F] pt-20">
+=======
+    <div className="min-h-screen bg-[#FAF9F6] dark:bg-[#1C1B18] pt-20">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
       <div className="section-padding">
         <div className="container-custom">
           {/* Header */}
@@ -138,10 +185,17 @@ function DirectoryContent() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
+<<<<<<< HEAD
             <h1 className="text-4xl md:text-5xl font-display font-bold text-[#2C2416] dark:text-[#F5F3F0] mb-4">
               {favoritesOnly ? 'Favorite Resources' : 'Resource Directory'}
             </h1>
             <p className="text-lg text-[#6B5D47] dark:text-[#B8A584] max-w-2xl mx-auto">
+=======
+            <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-4">
+              {favoritesOnly ? 'Favorite Resources' : 'Resource Directory'}
+            </h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               Explore our comprehensive directory of community resources, services, and organizations.
               Use the search and filters to find exactly what you need.
             </p>
@@ -154,11 +208,15 @@ function DirectoryContent() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-8"
           >
+<<<<<<< HEAD
             <AdvancedSearch
               initialQuery={searchQuery}
               onQueryChange={(value) => setSearchQuery(value)}
               resources={resources}
             />
+=======
+            <AdvancedSearch />
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           </motion.div>
 
           {/* Quick Stats Bar */}
@@ -166,7 +224,11 @@ function DirectoryContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
+<<<<<<< HEAD
             className="mb-8 flex overflow-x-auto pb-4 gap-4 no-scrollbar -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-4 md:overflow-visible"
+=======
+            className="mb-8 grid grid-cols-2 md:grid-cols-4 gap-4"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           >
             {[
               { label: 'Total Resources', value: resources.length },
@@ -177,14 +239,23 @@ function DirectoryContent() {
               <motion.div
                 key={idx}
                 whileHover={{ scale: 1.05, y: -2 }}
+<<<<<<< HEAD
                 className="flex-shrink-0 w-[140px] md:w-full bg-white/80 dark:bg-[#1F1B28]/80 backdrop-blur-xl rounded-2xl p-4 shadow-lg border border-white/30 dark:border-[#2c2c3e]/50 text-center"
+=======
+                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-4 shadow-lg border border-white/30 dark:border-gray-700/30 text-center"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                 style={{
                   backdropFilter: 'saturate(180%) blur(20px)',
                   WebkitBackdropFilter: 'saturate(180%) blur(20px)',
                 }}
               >
+<<<<<<< HEAD
                 <div className="text-xl md:text-2xl font-bold text-[#8B6F47] dark:text-[#D4A574]">{stat.value}</div>
                 <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-[#6B5D47] dark:text-[#B8A584] mt-1 opacity-60">{stat.label}</div>
+=======
+                <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{stat.value}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">{stat.label}</div>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               </motion.div>
             ))}
           </motion.div>
@@ -196,8 +267,13 @@ function DirectoryContent() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-8"
           >
+<<<<<<< HEAD
             <div className="bg-white/80 dark:bg-[#1F1B28]/80 backdrop-blur-xl rounded-3xl shadow-xl p-6 
                             border border-white/30 dark:border-[#2c2c3e]/50"
+=======
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-xl p-6 
+                            border border-white/30 dark:border-gray-700/30"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                   style={{
                     backdropFilter: 'saturate(180%) blur(20px)',
                     WebkitBackdropFilter: 'saturate(180%) blur(20px)',
@@ -206,14 +282,23 @@ function DirectoryContent() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 {/* Category Filter */}
                 <div className="flex-1">
+<<<<<<< HEAD
                   <label className="block text-sm font-medium text-[#6B5D47] dark:text-[#B8A584] mb-2">
+=======
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                     Category
                   </label>
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
+<<<<<<< HEAD
                     className="w-full px-4 py-2.5 rounded-2xl border-2 border-gray-200/50 dark:border-[#2c2c3e]/50 
                                bg-white/80 dark:bg-[#1F1B28]/80 backdrop-blur-xl text-[#2C2416] dark:text-[#F5F3F0] 
+=======
+                    className="w-full px-4 py-2.5 rounded-2xl border-2 border-gray-200/50 dark:border-gray-700/50 
+                               bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl text-gray-900 dark:text-white 
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                                focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none
                                transition-all shadow-lg hover:shadow-xl"
                     style={{
@@ -230,10 +315,17 @@ function DirectoryContent() {
                 </div>
 
                 {/* View Mode Toggle */}
+<<<<<<< HEAD
                 <div className="flex items-center justify-between md:justify-end gap-3">
                   <span className="text-sm font-bold uppercase tracking-widest text-[#6B5D47] dark:text-[#B8A584] opacity-60">View</span>
                   <div className="flex bg-white/80 dark:bg-[#1F1B28]/80 backdrop-blur-xl rounded-2xl p-1 
                                   shadow-lg border border-white/30 dark:border-[#2c2c3e]/50"
+=======
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">View:</span>
+                  <div className="flex bg-white/80 dark:bg-gray-700/80 backdrop-blur-xl rounded-2xl p-1 
+                                  shadow-lg border border-white/30 dark:border-gray-700/30"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                         style={{
                           backdropFilter: 'saturate(180%) blur(20px)',
                           WebkitBackdropFilter: 'saturate(180%) blur(20px)',
@@ -241,30 +333,51 @@ function DirectoryContent() {
                   >
                     <button
                       onClick={() => setViewMode('grid')}
+<<<<<<< HEAD
                       className={`p-2.5 rounded-xl transition-all duration-200 active:scale-90 ${
                         viewMode === 'grid'
                           ? 'bg-[#8B6F47] dark:bg-[#D4A574] text-white dark:text-[#0B0A0F] shadow-md'
                           : 'text-[#6B5D47] dark:text-[#B8A584] hover:bg-gray-100 dark:hover:bg-[#2c2c3e]'
+=======
+                      className={`p-2 rounded-xl transition-all duration-200 active:scale-95 ${
+                        viewMode === 'grid'
+                          ? 'bg-primary-600 text-white shadow-md'
+                          : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-600/50'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                       }`}
                     >
                       <Grid3x3 className="w-5 h-5" />
                     </button>
                     <button
                       onClick={() => setViewMode('list')}
+<<<<<<< HEAD
                       className={`p-2.5 rounded-xl transition-all duration-200 active:scale-90 ${
                         viewMode === 'list'
                           ? 'bg-[#8B6F47] dark:bg-[#D4A574] text-white dark:text-[#0B0A0F] shadow-md'
                           : 'text-[#6B5D47] dark:text-[#B8A584] hover:bg-gray-100 dark:hover:bg-[#2c2c3e]'
+=======
+                      className={`p-2 rounded-xl transition-all duration-200 active:scale-95 ${
+                        viewMode === 'list'
+                          ? 'bg-primary-600 text-white shadow-md'
+                          : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-600/50'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                       }`}
                     >
                       <List className="w-5 h-5" />
                     </button>
                     <button
                       onClick={() => setViewMode('map')}
+<<<<<<< HEAD
                       className={`p-2.5 rounded-xl transition-all duration-200 active:scale-90 ${
                         viewMode === 'map'
                           ? 'bg-[#8B6F47] dark:bg-[#D4A574] text-white dark:text-[#0B0A0F] shadow-md'
                           : 'text-[#6B5D47] dark:text-[#B8A584] hover:bg-gray-100 dark:hover:bg-[#2c2c3e]'
+=======
+                      className={`p-2 rounded-xl transition-all duration-200 active:scale-95 ${
+                        viewMode === 'map'
+                          ? 'bg-primary-600 text-white shadow-md'
+                          : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-600/50'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                       }`}
                     >
                       <MapIcon className="w-5 h-5" />
@@ -276,12 +389,20 @@ function DirectoryContent() {
               {/* Tags Filter */}
               <div className="mt-4">
                 <div className="flex items-center justify-between mb-2">
+<<<<<<< HEAD
                   <label className="block text-sm font-medium text-[#6B5D47] dark:text-[#B8A584]">
+=======
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                     Tags
                   </label>
                   <button
                     onClick={() => setShowFilters(!showFilters)}
+<<<<<<< HEAD
                     className="flex items-center gap-2 text-sm text-[#8B6F47] dark:text-[#D4A574] hover:text-[#6B5D47] dark:hover:text-[#B8A584]"
+=======
+                    className="flex items-center gap-2 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                   >
                     <Filter className="w-4 h-4" />
                     {showFilters ? 'Hide' : 'Show'} Tags
@@ -301,8 +422,13 @@ function DirectoryContent() {
                           onClick={() => toggleTag(tag)}
                           className={`px-3 py-1.5 rounded-2xl text-sm font-medium transition-all duration-200 flex items-center gap-2 active:scale-95 ${
                             selectedTags.includes(tag)
+<<<<<<< HEAD
                               ? 'bg-[#8B6F47] dark:bg-[#D4A574] text-white dark:text-[#0B0A0F] shadow-lg'
                               : 'bg-white/80 dark:bg-[#1F1B28]/80 backdrop-blur-xl text-[#6B5D47] dark:text-[#B8A584] hover:bg-white dark:hover:bg-[#2c2c3e] shadow-md border border-white/30 dark:border-[#2c2c3e]/50'
+=======
+                              ? 'bg-primary-600 text-white shadow-lg'
+                              : 'bg-white/80 dark:bg-gray-700/80 backdrop-blur-xl text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 shadow-md border border-white/30 dark:border-gray-700/30'
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                           }`}
                         >
                           {tag}
@@ -335,7 +461,11 @@ function DirectoryContent() {
               {(searchQuery || selectedCategory !== 'All Categories' || selectedTags.length > 0) && (
                 <button
                   onClick={clearFilters}
+<<<<<<< HEAD
                   className="mt-4 text-sm text-[#6B5D47] dark:text-[#B8A584] hover:text-[#8B6F47] dark:hover:text-[#D4A574] transition-colors"
+=======
+                  className="mt-4 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                 >
                   Clear all filters
                 </button>
@@ -343,20 +473,33 @@ function DirectoryContent() {
 
               {/* Compare Mode Toggle */}
               {comparingIds.length > 0 && (
+<<<<<<< HEAD
                 <div className="mt-4 flex items-center justify-between p-4 bg-[#f5ede1]/80 dark:bg-[#1F1B28]/80 
                                 backdrop-blur-xl rounded-2xl border border-[#D4A574]/30 dark:border-[#D4A574]/20
+=======
+                <div className="mt-4 flex items-center justify-between p-4 bg-primary-50/80 dark:bg-primary-900/20 
+                                backdrop-blur-xl rounded-2xl border border-primary-200/50 dark:border-primary-800/30
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                                 shadow-lg"
                       style={{
                         backdropFilter: 'saturate(180%) blur(20px)',
                         WebkitBackdropFilter: 'saturate(180%) blur(20px)',
                       }}
                 >
+<<<<<<< HEAD
                   <span className="text-sm text-[#8B6F47] dark:text-[#D4A574] font-medium">
+=======
+                  <span className="text-sm text-primary-700 dark:text-primary-300 font-medium">
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                     Comparing {comparingIds.length} resources
                   </span>
                   <button
                     onClick={() => setCompareMode(true)}
+<<<<<<< HEAD
                     className="px-4 py-2 bg-[#8B6F47] dark:bg-[#D4A574] text-white dark:text-[#0B0A0F] rounded-2xl hover:bg-[#6B5D47] dark:hover:bg-[#B8A584] 
+=======
+                    className="px-4 py-2 bg-primary-600 text-white rounded-2xl hover:bg-primary-700 
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                                active:scale-95 transition-all duration-200 text-sm font-medium flex items-center gap-2
                                shadow-lg hover:shadow-xl"
                   >
@@ -370,16 +513,28 @@ function DirectoryContent() {
 
           {/* Results Count */}
           <div className="mb-6 flex items-center justify-between">
+<<<<<<< HEAD
             <p className="text-[#6B5D47] dark:text-[#B8A584]">
               Showing <span className="font-semibold text-[#2C2416] dark:text-[#F5F3F0]">{filteredResources.length}</span> of{' '}
               <span className="font-semibold text-[#2C2416] dark:text-[#F5F3F0]">{resources.length}</span> resources
+=======
+            <p className="text-gray-600 dark:text-gray-400">
+              Showing <span className="font-semibold text-gray-900 dark:text-white">{filteredResources.length}</span> of{' '}
+              <span className="font-semibold text-gray-900 dark:text-white">{resources.length}</span> resources
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
             </p>
             {!compareMode && comparingIds.length < 3 && (
               <button
                 onClick={() => setCompareMode(true)}
+<<<<<<< HEAD
                 className="text-sm text-[#8B6F47] dark:text-[#D4A574] hover:text-[#6B5D47] dark:hover:text-[#B8A584] 
                            flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/80 dark:bg-[#1F1B28]/80 backdrop-blur-xl
                            shadow-lg hover:shadow-xl border border-white/30 dark:border-[#2c2c3e]/50
+=======
+                className="text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 
+                           flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl
+                           shadow-lg hover:shadow-xl border border-white/30 dark:border-gray-700/30
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                            active:scale-95 transition-all duration-200"
                 style={{
                   backdropFilter: 'saturate(180%) blur(20px)',
@@ -393,8 +548,13 @@ function DirectoryContent() {
           </div>
 
           {/* Resources Display */}
+<<<<<<< HEAD
           <AnimatePresence mode="wait" initial={false}>
             {viewMode === 'map' && (
+=======
+          <AnimatePresence mode="wait">
+            {viewMode === 'map' ? (
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               <motion.div
                 key="map"
                 initial={{ opacity: 0 }}
@@ -403,8 +563,12 @@ function DirectoryContent() {
               >
                 <InteractiveMap resources={filteredResources} />
               </motion.div>
+<<<<<<< HEAD
             )}
             {viewMode !== 'map' && filteredResources.length > 0 && (
+=======
+            ) : filteredResources.length > 0 ? (
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               <motion.div
                 key="resources"
                 initial={{ opacity: 0 }}
@@ -427,8 +591,12 @@ function DirectoryContent() {
                   />
                 ))}
               </motion.div>
+<<<<<<< HEAD
             )}
             {viewMode !== 'map' && filteredResources.length === 0 && (
+=======
+            ) : (
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
               <motion.div
                 key="no-results"
                 initial={{ opacity: 0 }}
@@ -436,8 +604,13 @@ function DirectoryContent() {
                 exit={{ opacity: 0 }}
                 className="text-center py-12"
               >
+<<<<<<< HEAD
                 <p className="text-xl text-[#6B5D47] dark:text-[#B8A584] mb-4">No resources found</p>
                 <p className="text-[#6B5D47]/70 dark:text-[#B8A584]/70 mb-6">Try adjusting your search or filters</p>
+=======
+                <p className="text-xl text-gray-600 dark:text-gray-400 mb-4">No resources found</p>
+                <p className="text-gray-500 dark:text-gray-500 mb-6">Try adjusting your search or filters</p>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
                 <button onClick={clearFilters} className="btn-primary rounded-2xl">
                   Clear Filters
                 </button>
@@ -466,10 +639,17 @@ export default function DirectoryPage() {
   return (
     <Suspense
       fallback={
+<<<<<<< HEAD
         <div className="min-h-screen bg-[#FAF9F6] dark:bg-[#0B0A0F] pt-20 flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#8B6F47] dark:border-[#D4A574] mx-auto mb-4"></div>
             <p className="text-[#6B5D47] dark:text-[#B8A584]">Loading directory...</p>
+=======
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+            <p className="text-gray-600 dark:text-gray-400">Loading directory...</p>
+>>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
           </div>
         </div>
       }

@@ -4,13 +4,13 @@ import { ensureAdmin } from '@/lib/admin/access'
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { resourceId: string } }
+  { params }: { params: { id: string } }
 ) {
   try {
     await ensureAdmin(request)
 
-    const { resourceId } = params
-    if (!resourceId) {
+    const { id } = params
+    if (!id) {
       return NextResponse.json(
         { success: false, error: 'Resource id is required' },
         { status: 400 }
@@ -39,7 +39,7 @@ export async function PATCH(
     const { data, error } = await adminClient
       .from('resources')
       .update(updates)
-      .eq('id', resourceId)
+      .eq('id', id)
       .select('*')
       .single()
 
@@ -67,13 +67,13 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { resourceId: string } }
+  { params }: { params: { id: string } }
 ) {
   try {
     await ensureAdmin(request)
 
-    const { resourceId } = params
-    if (!resourceId) {
+    const { id } = params
+    if (!id) {
       return NextResponse.json(
         { success: false, error: 'Resource id is required' },
         { status: 400 }
@@ -81,7 +81,7 @@ export async function DELETE(
     }
 
     const adminClient = createAdminClient()
-    const { error } = await adminClient.from('resources').delete().eq('id', resourceId)
+    const { error } = await adminClient.from('resources').delete().eq('id', id)
 
     if (error) {
       console.error('Failed to delete resource:', error)

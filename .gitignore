@@ -29,20 +29,13 @@ yarn-error.log*
 # vercel
 .vercel
 
-<<<<<<< HEAD
 # replit
 .replit
 replit.nix
 
-=======
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
-<<<<<<< HEAD
 # logs
 /tmp/logs/
-
-=======
->>>>>>> cf332b3929eae5f9e2ac22ca73c0b281aaf9c43b

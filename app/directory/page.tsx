@@ -1,5 +1,6 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { useState, useEffect, useMemo, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -8,7 +9,19 @@ import { categories } from '@/data/resources'
 import ResourceCard from '@/components/ResourceCard'
 import AdvancedSearch from '@/components/AdvancedSearch'
 import ResourceComparison from '@/components/ResourceComparison'
-import InteractiveMap from '@/components/InteractiveMap'
+
+const InteractiveMap = dynamic(() => import('@/components/InteractiveMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[500px] bg-[#FAF9F6] dark:bg-[#1C1B18] rounded-3xl animate-pulse flex items-center justify-center">
+      <div className="text-center">
+        <MapIcon className="w-12 h-12 text-[#8B6F47]/20 mx-auto mb-4" />
+        <p className="text-[#6B5D47]/40 text-sm font-medium">Loading map...</p>
+      </div>
+    </div>
+  )
+})
+
 import { useFavorites } from '@/contexts/FavoritesContext'
 import { useData } from '@/contexts/DataContext'
 function DirectoryContent() {

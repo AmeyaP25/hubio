@@ -271,7 +271,11 @@ export class DatabaseService {
     return Array.from(this.db.volunteerOpportunities.values())
   }
 
-  // =================================================================  /**
+  // ========================================================================
+  // RESOURCE OPERATIONS
+  // ========================================================================
+
+  /**
    * Get All Resources
    * 
    * @returns Resource[]
@@ -410,7 +414,7 @@ export class DatabaseService {
   getAllBadges(): Badge[] {
     return Array.from(this.db.badges.values())
   }
-  // =================================================================}
+}
 
 // Singleton instance
 let dbInstance: DatabaseService | null = null
